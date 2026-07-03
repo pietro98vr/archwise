@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#007e86">
+<link rel="icon" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ArchWise — supporto decisionale full-arch">
+<meta property="og:description" content="Questionario guidato per la scelta della protesi full-arch su impianti: opzione piu indicata, confronto tra sei soluzioni e resoconto PDF.">
+<meta property="og:image" content="favicon.svg">
+<meta name="twitter:card" content="summary">
+<title>ArchWise · full-arch decision support</title>
+<meta name="description" content="Guida decisionale per protesi full-arch avvitate su impianti: un questionario passo-passo, la riabilitazione più indicata e il confronto tra le sei opzioni.">
+<style>
+:root{
+  --ink:#14282d; --muted:#5a6b6e; --faint:#8fa0a0;
+  --brand:#007e86; --brand2:#00a6ae; --lime:#00a6ae; --lime-2:#7fd6d9; --lime-soft:#e2f2f2;
+  --line:#e0eaea; --line2:#eef3f3; --bg:#f3f6f6; --bg2:#e6f0f0; --card:#fff; --card2:#f8fbfb;
+  --gold:#c68a2e; --red:#bf4a30; --blue:#2c6f96; --violet:#8a5cc0;
+  --sh1:0 1px 2px rgba(16,40,33,.05),0 3px 10px rgba(16,40,33,.05);
+  --sh2:0 8px 30px rgba(16,40,33,.10); --sh3:0 20px 60px rgba(16,40,33,.18);
+  --r:14px; --rl:22px; --rs:10px;
+  --ff:'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;--display:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--ff);font-size:16px;line-height:1.55;color:var(--ink);
+  background:var(--bg);
+  min-height:100vh;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{margin:0;font-family:var(--display);font-weight:600;line-height:1.2;letter-spacing:0}
+a{color:var(--brand2);text-decoration:none}a:hover{text-decoration:underline}
+p{margin:.4em 0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(14px,3vw,26px)}
+.hidden{display:none!important}
+
+/* brand / header */
+header.top{position:sticky;top:0;z-index:40;background:#f7fafa;border-bottom:1px solid var(--line)}
+.top-in{display:flex;align-items:center;gap:14px;min-height:66px;padding:8px 0;position:relative}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.logo{width:44px;height:44px;border-radius:13px;flex:none;background:linear-gradient(140deg,var(--brand),var(--brand2) 60%,var(--lime));display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,126,134,.32)}
+.logo svg{width:30px;height:30px}
+.brand .wm{min-width:0}
+.brand .wm b{font-size:17px;font-weight:800;letter-spacing:-.03em;display:block;line-height:1}
+.brand .wm b span{color:var(--brand)}
+.brand .wm small{display:block;color:var(--muted);font-size:11px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav{display:flex;gap:3px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav button{font:inherit;font-size:13.5px;font-weight:650;color:var(--muted);background:none;border:0;padding:9px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;transition:.15s}
+.nav button:hover{background:var(--bg2);color:var(--ink)}
+.nav button.on{background:var(--brand);color:#fff}
+.lang{flex:none;display:flex;background:var(--bg2);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.lang button{font:inherit;font-size:12px;font-weight:800;border:0;background:none;color:var(--muted);padding:8px 9px;cursor:pointer}
+.lang button.on{background:#fff;color:var(--brand);box-shadow:var(--sh1)}
+.menu-btn{display:none;flex:none;border:1px solid var(--line);background:#fff;border-radius:10px;width:42px;height:42px;cursor:pointer}
+
+.view{display:none;animation:fade .3s ease}.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+section.pad{padding:14px 0 44px}
+.eyebrow{display:inline-block;font-family:var(--ff);font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-top:2px solid var(--brand);padding:7px 0 0;background:none}
+
+/* ---------- WIZARD ---------- */
+.stage{max-width:660px;margin:0 auto;padding:20px 0 40px}
+.intro{text-align:center;margin-bottom:18px}
+.intro h1{font-size:clamp(23px,4vw,33px);margin:14px 0 8px}
+.intro p{color:var(--muted);max-width:52ch;margin:0 auto;font-size:15.5px}
+.prog{display:flex;align-items:center;gap:12px;margin:6px 0 14px}
+.prog .track{flex:1;height:7px;border-radius:999px;background:var(--bg2);overflow:hidden}
+.prog .track i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--lime),var(--brand));width:0;transition:width .45s cubic-bezier(.2,.8,.2,1)}
+.prog .lbl{font-size:12.5px;font-weight:700;color:var(--muted);white-space:nowrap}
+.qcard{background:var(--card);border:1px solid var(--line);border-radius:var(--rl);box-shadow:var(--sh2);padding:clamp(20px,4vw,32px);animation:slide .32s cubic-bezier(.2,.8,.2,1)}
+@keyframes slide{from{opacity:0;transform:translateY(12px) scale(.99)}to{opacity:1;transform:none}}
+.qcard .step-tag{font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--lime);display:flex;align-items:center;gap:7px}
+.qcard .step-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--lime)}
+.qcard h2{font-size:clamp(20px,3.2vw,26px);margin:10px 0 4px;letter-spacing:-.02em}
+.qopts{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.qopt{display:flex;align-items:center;gap:13px;width:100%;text-align:left;font:inherit;font-size:16px;font-weight:600;color:var(--ink);background:var(--card2);border:1.6px solid var(--line);border-radius:14px;padding:15px 16px;cursor:pointer;transition:.16s}
+.qopt:hover{border-color:var(--lime-2);background:#fff;transform:translateY(-1px);box-shadow:var(--sh1)}
+.qopt .rd{width:22px;height:22px;border-radius:50%;border:2px solid #c7d4d4;flex:none;display:grid;place-items:center;transition:.16s}
+.qopt.sel{border-color:var(--brand);background:linear-gradient(180deg,#f2fbfb,#fff);box-shadow:var(--sh1)}
+.qopt.sel .rd{border-color:var(--brand);background:var(--brand)}
+.qopt.sel .rd::after{content:"";width:9px;height:9px;border-radius:50%;background:#fff}
+.qopt .lab{flex:1}
+.qnav{display:flex;align-items:center;gap:10px;margin-top:22px}
+.why{margin-top:16px;border-top:1px dashed var(--line2);padding-top:12px}
+.why>summary{list-style:none;cursor:pointer;font-size:13px;font-weight:700;color:var(--brand2);display:inline-flex;align-items:center;gap:7px}
+.why>summary::-webkit-details-marker{display:none}
+.why .whx{margin-top:10px;font-size:13.5px;color:#333f42;line-height:1.62}
+.why .whx p{margin:.55em 0}
+sup.reflink{cursor:pointer;color:var(--blue);background:#e9f1f7;border-radius:4px;padding:0 4px;font-size:9.5px;font-weight:800;margin:0 1px}
+.whybib{margin-top:13px;padding-top:11px;border-top:1px solid var(--line2)}
+.whybib-h{font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--brand);margin-bottom:7px}
+.whyref{font-size:11.5px;color:var(--muted);margin-bottom:6px;line-height:1.45}
+.whyref b{color:var(--ink)}
+.whyref a{font-weight:700}
+.whyref .badge{vertical-align:middle}
+.btn{font:inherit;font-weight:750;border:0;border-radius:12px;padding:12px 20px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.15s}
+.btn.primary{background:var(--brand);color:#fff;box-shadow:var(--sh1)}
+.btn.primary:hover{filter:brightness(1.07);transform:translateY(-1px)}
+.btn.ghost{background:#fff;border:1.6px solid var(--line);color:var(--ink)}
+.btn.ghost:hover{border-color:var(--lime-2)}
+.btn.sm{padding:9px 14px;font-size:14px}
+.btn.block{width:100%}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+
+/* ---------- RESULTS ---------- */
+.results{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:16px;padding-bottom:30px}
+.rback{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.rhero{position:relative;overflow:hidden;border-radius:var(--rl);padding:clamp(18px,3vw,26px);color:#fff;background:var(--brand);box-shadow:var(--sh1)}
+.rhero::after{content:"";position:absolute;right:0;top:0;bottom:0;width:5px;background:var(--lime)}
+.rhero .k{position:relative;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;opacity:.92}
+.rhero h2{position:relative;font-size:clamp(21px,3.4vw,29px);margin:6px 0 10px}
+.rhero .compo{position:relative;display:flex;flex-wrap:wrap;gap:7px}
+.tagw{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:6px 11px;border-radius:999px;font-size:12px;font-weight:600}
+.tagw b{font-weight:800}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rl);box-shadow:var(--sh1)}
+.card.pad{padding:clamp(15px,2.4vw,22px)}
+.ch{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.ch .n{display:none}
+.ch h3{font-size:15.5px}
+.ch .sub{font-size:12px;color:var(--faint);margin-left:auto}
+.rank{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.rk{border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:12px 14px;cursor:pointer;transition:.18s}
+.rk:hover{box-shadow:var(--sh1)}
+.rk.top{border-color:var(--lime-2);background:linear-gradient(180deg,#fafdfb,#fff)}
+.rk-top{display:flex;align-items:center;gap:11px}
+.rk .pos{width:28px;height:28px;flex:none;border-radius:8px;background:var(--bg2);color:var(--muted);font-weight:800;display:grid;place-items:center;font-size:13px}
+.rk.top .pos{background:linear-gradient(135deg,var(--lime),var(--lime-2));color:#fff}
+.rk .nm{font-weight:750;font-size:14.5px;min-width:0}
+.rk .nm small{display:block;font-weight:500;color:var(--faint);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rk .sc{margin-left:auto;text-align:right;flex:none}
+.rk .sc b{font-size:19px;font-weight:800}.rk .sc span{font-size:10.5px;color:var(--faint)}
+.bar{height:7px;border-radius:999px;background:var(--bg2);overflow:hidden;margin-top:10px}
+.bar i{display:block;height:100%;border-radius:999px;width:0;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.rk .whyx{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line2);display:none}
+.rk.open .whyx{display:block;animation:fade .25s}
+.contrib{display:flex;align-items:center;gap:8px;font-size:12.5px;margin-bottom:5px}
+.contrib .d{flex:none;font-weight:800;width:34px;text-align:center;padding:2px 0;border-radius:6px;font-size:11px}
+.contrib .d.pos{background:var(--lime-soft);color:#0a6b72}.contrib .d.neg{background:#fbe6df;color:#a23a22}
+.contrib .tx{color:var(--muted)}
+.reflink{font-size:10px;font-weight:800;color:var(--blue);background:#e9f1f7;border-radius:5px;padding:1px 5px;margin-left:2px;cursor:pointer}
+.chiprow{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{font-size:11.5px;padding:3px 9px;border-radius:999px;background:var(--bg2);color:var(--muted);border:1px solid var(--line)}
+.chip.good{background:var(--lime-soft);color:#0a6b72;border-color:#cfe9e6}
+.chip.warn{background:#fbe6df;color:#a23a22;border-color:#f0cabb}
+.note{font-size:12.5px;color:var(--muted);background:var(--card2);border:1px dashed var(--line);border-radius:12px;padding:11px 13px}
+.answers{display:flex;flex-wrap:wrap;gap:6px}
+.ansch{font-size:11.5px;padding:5px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--muted);cursor:pointer}
+.ansch b{color:var(--ink);font-weight:700}
+.ansch:hover{border-color:var(--lime-2)}
+.namegrid{display:grid;grid-template-columns:auto 1fr;gap:8px;margin-top:4px}
+.inp{font:inherit;padding:11px;border:1.5px solid var(--line);border-radius:11px;background:#fff;min-width:0}
+.inp:focus{outline:none;border-color:var(--brand2)}
+
+/* map */
+.mapwrap{overflow:hidden;border:1px solid var(--line);border-radius:var(--r);background:linear-gradient(0deg,transparent 23px,var(--line2) 24px),linear-gradient(90deg,transparent 23px,var(--line2) 24px);background-size:24px 24px;background-color:#fafdfd}
+.mapwrap svg{display:block;width:100%;height:auto;max-width:100%}
+.mapcard{overflow:visible}
+@media(min-width:1024px){.results .mapcard{width:min(94vw,1360px);margin-left:50%;transform:translateX(-50%)}}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:9px;font-size:11.5px;color:var(--muted)}
+.legend i{display:inline-block;width:20px;height:0;border-top:3px solid var(--lime);vertical-align:middle;margin-right:5px}
+.legend i.dash{border-top-style:dashed;border-color:var(--gold)}.legend i.dim{border-color:#c7d4d4}
+
+/* catalogue / refs / credits / legal */
+.grid2{display:grid;grid-template-columns:1fr;gap:12px}@media(min-width:680px){.grid2{grid-template-columns:1fr 1fr}}
+.optcard{border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:15px;box-shadow:var(--sh1)}
+.optcard h4{font-size:15px;display:flex;align-items:center;gap:8px}
+.swatch{width:13px;height:13px;border-radius:4px;flex:none}
+.layers{font-size:12.5px;color:var(--muted);margin:8px 0}.layers b{color:var(--ink)}
+.refhead{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0}
+.reffilter{font:inherit;font-size:12.5px;font-weight:700;border:1.5px solid var(--line);background:#fff;color:var(--muted);border-radius:999px;padding:6px 12px;cursor:pointer}
+.reffilter.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.reflist{display:flex;flex-direction:column;gap:9px}
+.ref{display:flex;gap:12px;padding:13px 15px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);box-shadow:var(--sh1)}
+.ref .num{flex:none;width:28px;height:28px;border-radius:8px;background:var(--lime-soft);color:var(--brand);font-weight:800;display:grid;place-items:center;font-size:12.5px}
+.ref .t{font-weight:600;font-size:13.5px}.ref .j{font-size:12px;color:var(--muted);margin-top:3px}.ref .j em{color:var(--brand2);font-style:normal;font-weight:600}
+.ref .tags{margin-top:6px;display:flex;flex-wrap:wrap;gap:5px}.ref .doi{font-size:11.5px;font-weight:700}
+.badge{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:2px 7px;border-radius:5px;background:var(--bg2);color:var(--muted)}
+.badge.q1{background:#e2f2f2;color:#0a8a86}.badge.grp{background:#eef0fb;color:#4854b3}
+.credits{display:grid;grid-template-columns:1fr;gap:14px}@media(min-width:720px){.credits{grid-template-columns:repeat(3,1fr)}}
+.person{text-align:center;padding:24px 18px;border:1px solid var(--line);border-radius:var(--rl);background:linear-gradient(180deg,var(--card),var(--card2));box-shadow:var(--sh1)}
+.avatar{width:76px;height:76px;border-radius:50%;margin:0 auto 12px;overflow:hidden;box-shadow:var(--sh2)}.avatar svg{width:100%;height:100%;display:block}
+.person h3{font-size:17px}.person .role{margin-top:4px;font-size:11.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--brand2)}.person .desc{margin-top:9px;font-size:12.5px;color:var(--muted)}
+.prose{font-size:14px;line-height:1.65;color:#2b3d40}.prose p{margin:.6em 0}.prose h4{margin:16px 0 4px;font-size:14.5px}
+
+/* modal gate */
+.gate{position:fixed;inset:0;z-index:80;background:rgba(18,32,25,.55);backdrop-filter:blur(4px);display:grid;place-items:center;padding:16px;animation:fade .25s}
+.gate .box{background:#fff;border-radius:var(--rl);max-width:520px;width:100%;box-shadow:var(--sh3);overflow:hidden;max-height:92vh;display:flex;flex-direction:column}
+.gate .top-b{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;padding:20px 22px;display:flex;align-items:center;gap:12px}
+.gate .top-b .logo{box-shadow:none}
+.gate .bd{padding:20px 22px;overflow:auto;font-size:13.5px;line-height:1.6;color:#2b3d40}
+.gate .bd h4{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--brand);margin:12px 0 3px}
+.gate .ft{padding:14px 22px;border-top:1px solid var(--line);display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.tip{position:fixed;z-index:60;max-width:280px;background:#14282d;color:#fff;font-size:12.5px;line-height:1.45;padding:10px 12px;border-radius:10px;box-shadow:var(--sh3);pointer-events:none;opacity:0;transform:translateY(4px);transition:.15s}
+.tip.on{opacity:1;transform:none}.tip b{color:var(--lime-2)}
+.footer{border-top:1px solid var(--line);margin-top:20px;padding:18px 0 40px;font-size:12px;color:var(--faint);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.footer a{color:var(--muted)}
+
+@media(max-width:720px){
+  .menu-btn{display:grid;place-items:center}
+  .nav{display:none}
+  .nav.open{display:flex;position:absolute;top:60px;left:8px;right:8px;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px;gap:2px;box-shadow:var(--sh2);z-index:45}
+  .nav.open button{text-align:left}
+}
+
+/* ---------- scroll questionnaire (reveal on scroll) ---------- */
+.scroll-prog{position:sticky;top:74px;z-index:25;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.72);backdrop-filter:blur(8px);padding:9px 14px;border-radius:999px;border:1px solid var(--line);box-shadow:var(--sh1);max-width:640px;margin:6px auto 0}
+.scroll-prog .track{flex:1;height:7px;border-radius:999px;background:var(--bg2);overflow:hidden}
+.scroll-prog .track i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--lime),var(--brand));width:4%;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.scroll-prog .lbl{font-size:12.5px;font-weight:700;color:var(--muted);white-space:nowrap}
+.qblock{max-width:648px;margin:0 auto;padding:14px 4px}
+.qblock.qform{padding:14px 4px 26px}
+.intro-block{text-align:center;min-height:calc(100vh - 160px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px}
+.archero{width:min(342px,72vw);margin:0 auto 2px}
+.intro-block .howmini{display:flex;flex-direction:column;gap:9px;max-width:430px;margin:20px auto 0;text-align:left}
+.howmini .s{display:flex;gap:11px;align-items:flex-start;font-size:13.5px;color:var(--muted)}
+.howmini .s b{flex:none;width:23px;height:23px;border-radius:50%;background:var(--lime-soft);color:var(--brand);display:grid;place-items:center;font-size:12px;font-weight:800}
+.scrolldown{margin-top:22px;font-size:13px;font-weight:800;color:var(--brand);animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+.qh{color:var(--ink);font-family:var(--display);font-size:clamp(22px,3.4vw,30px);letter-spacing:-.005em;margin:8px 0 4px}
+.qblock .sec-tag{font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--lime);display:flex;align-items:center;gap:7px}
+.qblock .sec-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--lime)}
+.why-h{font-size:12.5px;font-weight:800;color:var(--brand);display:flex;align-items:center;gap:7px;margin-bottom:5px}
+.why.open{background:linear-gradient(180deg,#f6fbfb,#fff);border:1px solid var(--line);border-top:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-top:16px}
+.res-block{padding-top:6px}
+.res-div{display:flex;align-items:center;gap:12px;margin:2px auto 12px;color:var(--brand);font-weight:800;letter-spacing:.05em;text-transform:uppercase;font-size:12.5px}
+.res-div::before,.res-div::after{content:"";flex:1;height:1px;background:var(--line)}
+@supports (animation-timeline: view()){
+ .qblock.qform{opacity:.001;animation:qin linear both;animation-timeline:view();animation-range:entry 3% entry 52%}
+ @keyframes qin{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+ .qh.rv{color:transparent;-webkit-background-clip:text;background-clip:text;background-image:linear-gradient(90deg,var(--brand2),var(--ink) 72%);background-repeat:no-repeat;background-size:0% 100%;animation:qwipe linear both;animation-timeline:view();animation-range:entry 8% cover 44%}
+ @keyframes qwipe{to{background-size:100% 100%}}
+}
+@media(prefers-reduced-motion:reduce){.qblock.qform{opacity:1!important;animation:none!important}.qh.rv{animation:none!important;color:var(--ink)!important;background:none!important;-webkit-text-fill-color:currentColor!important}.scrolldown{animation:none}}
+
+html{scroll-behavior:smooth}
+@media(min-width:1000px){
+ .stage{max-width:1060px}
+ .qblock{max-width:1060px}
+ .qblock.qform{display:grid;grid-template-columns:1fr 1fr;column-gap:40px;align-items:start;max-width:960px}
+ .qblock.qform .sec-tag{grid-column:1;grid-row:1}
+ .qblock.qform h2{grid-column:1;grid-row:2}
+ .qblock.qform .qopts{grid-column:1;grid-row:3}
+ .qblock.qform .why{grid-column:2;grid-row:1/5;margin-top:0}
+ .results{max-width:1000px}
+ .rank{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+ .grid2{grid-template-columns:1fr 1fr 1fr}
+}
+@media(min-width:760px){html{scroll-snap-type:y proximity;scroll-padding-top:82px}.qblock.qform{scroll-snap-align:start}}
+/* ---------- PRINT (PDF report) ---------- */
+@media screen{#report{display:none}}
+@media print{
+  body{background:#fff!important}
+  body>*{display:none!important}
+  #report{display:block!important}
+  @page{size:A4;margin:13mm}
+  #report{font-family:var(--ff);color:#14282d;font-size:11.5px}
+  .r-head{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid var(--brand);padding-bottom:10px}
+  .r-brand{display:flex;align-items:center;gap:10px}
+  .r-brand .lg{width:34px;height:34px;border-radius:9px;background:linear-gradient(140deg,#007e86,#00a6ae 60%,#00a6ae);display:grid;place-items:center}
+  .r-brand .lg svg{width:22px;height:22px}
+  .r-tt{font-size:17px;font-weight:800;letter-spacing:-.02em}.r-tt span{color:#007e86}
+  .r-sub{font-size:10px;color:#5a6b6e}
+  .r-meta{text-align:right;font-size:10.5px}.r-meta b{font-weight:700}.r-meta span{color:#8598}
+  .r-primary{border:1.5px solid var(--brand);border-radius:11px;background:#f2fbfb;padding:12px 15px;margin:14px 0}
+  .r-pk{font-size:9.5px;text-transform:uppercase;letter-spacing:.07em;color:#007e86;font-weight:800}
+  .r-pn{font-size:18px;font-weight:800;margin:2px 0 7px}
+  .r-tags{display:flex;flex-wrap:wrap;gap:6px}.r-tags span{font-size:10.5px;background:#fff;border:1px solid #d5e0e0;border-radius:20px;padding:3px 9px}
+  .r-h2{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#007e86;border-bottom:1px solid #e0eaea;padding-bottom:4px;margin:14px 0 8px}
+  .r-graph{border:1px solid #e0eaea;border-radius:8px;padding:6px;background:#fafdfd}
+  .r-graph svg{width:100%;height:auto;max-height:300px}
+  .r-bar{margin-bottom:8px}.r-bl{display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px}.r-bl b{font-weight:800}
+  .r-track{height:9px;background:#eef3f3;border-radius:20px;overflow:hidden}.r-track i{display:block;height:100%;border-radius:20px}
+  .r-path{font-size:10.5px;color:#2b3d40;line-height:1.7}
+  .r-foot{margin-top:16px;border-top:1px solid #e0eaea;padding-top:8px;font-size:9px;color:#5a6b6e}.r-foot .dis{margin-top:3px;font-style:italic}
+  .r-chip{display:inline-block;font-weight:700;padding:1px 6px;border-radius:5px;background:#e2f2f2;color:#0a6b72;margin:0 3px}
+}
+</style>
+</head>
+<body>
+
+<!-- LEGAL GATE -->
+<div class="gate" id="gate">
+  <div class="box">
+    <div class="top-b"><span class="logo" id="gateLogo"></span><div><div style="font-weight:800;font-size:17px" id="gateTitle"></div><div style="font-size:11.5px;opacity:.9" id="gateKicker"></div></div></div>
+    <div class="bd" id="gateBody"></div>
+    <div class="ft"><button class="btn ghost sm" id="gateLegalBtn"></button><button class="btn primary" id="gateOk"></button></div>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap top-in">
+    <div class="brand">
+      <span class="logo" id="brandLogo"></span>
+      <span class="wm"><b>Arch<span>Wise</span></b><small id="brandSub"></small></span>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14282d" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <nav class="nav" id="nav"></nav>
+    <div class="lang" id="lang"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="view on" id="view-tool"><div class="stage" id="stage"></div></section>
+  <section class="view" id="view-model"></section>
+  <section class="view" id="view-refs"></section>
+  <section class="view" id="view-credits"></section>
+  <section class="view" id="view-legal"></section>
+  <section class="view" id="view-info"></section>
+</main>
+
+<div class="wrap"><div class="footer" id="footer"></div></div>
+<div class="tip" id="tip"></div>
+<div id="report"></div>
+
+<script>
+/*=================== ENGINE (validated on the 5 published cases) ===================*/
+(function(root){"use strict";
+ var OPTIONS=["toronto","natural","thimble","tizr","barovd","fullzr"];
+ var HANDLERS={
+  young:i=>i.young?{a:"yes",next:"paraf_young"}:{a:"no",next:"paraf_notyoung"},
+  paraf_young:i=>i.parafunction?{a:"yes",next:"smile"}:{a:"no",next:"zirconia_risk"},
+  zirconia_risk:i=>i.zirconiaRiskAntag?{a:"yes",next:"smile"}:{a:"no",next:"invest_repair"},
+  invest_repair:i=>i.willingInvest?{a:"yes",next:"invest_age"}:{a:"no",next:"tizr_space_L"},
+  invest_age:i=>i.investPractical?{a:"yes",out:"thimble"}:{a:"no",next:"tizr_space_L"},
+  tizr_space_L:i=>i.tiZrSpace?{a:"yes",out:"tizr"}:{a:"no",next:"smile"},
+  paraf_notyoung:i=>i.parafunction?{a:"yes",next:"smile"}:{a:"no",next:"tizr_space_R"},
+  tizr_space_R:i=>i.tiZrSpace?{a:"yes",next:"antag_zirc_R"}:{a:"no",next:"smile"},
+  antag_zirc_R:i=>i.zirconiaRiskAntag?{a:"yes",next:"smile"}:{a:"no",out:"tizr"},
+  smile:i=>i.lowSmile?{a:"yes",next:"softcomp_low"}:{a:"no",next:"softcomp_high"},
+  softcomp_low:i=>i.needSoftComp?{a:"yes",next:"accept_ovd"}:{a:"no",out:"natural"},
+  softcomp_high:i=>i.needSoftComp?{a:"yes",out:"toronto"}:{a:"no",out:"natural"},
+  accept_ovd:i=>i.acceptOVD?{a:"yes",next:"ovd_space"}:{a:"no",out:"toronto_or_long"},
+  ovd_space:i=>i.ovdSpace?{a:"yes",next:"hygiene"}:{a:"no",out:"toronto_or_long"},
+  hygiene:i=>i.reducedHygiene?{a:"yes",out:"barovd"}:{a:"no",out:"toronto_or_long"}
+ };
+ function walk(s,i){var id=s,p=[],g=0;while(g++<60){var h=HANDLERS[id](i);p.push({id:id,a:h.a});if(h.out)return{outcome:h.out,path:p};id=h.next;}return{outcome:"toronto_or_long",path:p};}
+ function flowchart(i){var r=walk("young",i),o=r.outcome,p=r.path.slice(),rd=[];
+  if(o==="thimble"&&i.budget!=="high"){rd.push({from:"thimble",to:"tizr"});o="tizr";}
+  if(o==="tizr"&&i.budget==="low"){rd.push({from:"tizr",to:"smile"});var r2=walk("smile",i);r2.path.forEach(x=>p.push({id:x.id,a:x.a,redirected:true}));o=r2.outcome;}
+  return{outcome:o,path:p,redirects:rd};}
+ var BASE={toronto:62,natural:60,thimble:56,tizr:58,barovd:50,fullzr:34};
+ var FACTORS=[
+  {id:"parafunction",when:i=>i.parafunction,scale:i=>i.parafSeverity||1,d:{toronto:12,natural:12,thimble:-16,tizr:-14,barovd:8,fullzr:-20},refs:["haggman2024","menini2013","wong2018"]},
+  {id:"antagonist_zirc",when:i=>i.zirconiaRiskAntag,d:{toronto:4,natural:11,thimble:-10,tizr:-9,barovd:4,fullzr:-12},refs:["kazemi2014","delucchi2021"]},
+  {id:"esthetic_high",when:i=>i.esthetic==="high",d:{toronto:-2,natural:4,thimble:13,tizr:12,barovd:-6,fullzr:11},refs:["bidra2017","papaspyridakos2024","wong2018"]},
+  {id:"esthetic_low",when:i=>i.esthetic==="low",d:{toronto:7,natural:4,thimble:-4,tizr:-3,barovd:5,fullzr:-4},refs:["wong2018","bidra2017"]},
+  {id:"smile_high",when:i=>i.smile==="high"||(i.smile==null&&!i.lowSmile),d:{toronto:-7,natural:2,thimble:3,tizr:3,barovd:-4,fullzr:2},refs:["sriphadungporn2017"]},
+  {id:"smile_medium",when:i=>i.smile==="medium",d:{toronto:-3,natural:1,thimble:1,tizr:1,barovd:-2,fullzr:1},refs:["sriphadungporn2017"]},
+  {id:"smile_low",when:i=>i.smile==="low"||(i.smile==null&&i.lowSmile),d:{toronto:6,natural:1,thimble:0,tizr:0,barovd:3,fullzr:0},refs:["sriphadungporn2017"]},
+  {id:"softcomp_yes",when:i=>i.needSoftComp,d:{toronto:9,natural:3,thimble:-6,tizr:-6,barovd:13,fullzr:-6},refs:["carpentieri2019","hamilton2023"]},
+  {id:"softcomp_no",when:i=>!i.needSoftComp,d:{toronto:-1,natural:7,thimble:4,tizr:4,barovd:-2,fullzr:3},refs:["carpentieri2019"]},
+  {id:"hygiene_reduced",when:i=>i.reducedHygiene,d:{toronto:-4,natural:-4,thimble:-3,tizr:-5,barovd:16,fullzr:-6},refs:["hamilton2023"]},
+  {id:"space_reduced",when:i=>i.space==="reduced",d:{toronto:6,natural:4,thimble:-8,tizr:-15,barovd:-15,fullzr:-8},refs:["carpentieri2019","papaspyridakos2024"]},
+  {id:"space_ample",when:i=>i.space==="ample",d:{toronto:0,natural:0,thimble:5,tizr:8,barovd:8,fullzr:3},refs:["carpentieri2019","papaspyridakos2024"]},
+  {id:"space_verylow",when:i=>i.space==="verylow",d:{toronto:2,natural:0,thimble:-14,tizr:-25,barovd:-25,fullzr:-16},refs:["carpentieri2019","papaspyridakos2024"]},
+  {id:"budget_low",when:i=>i.budget==="low",d:{toronto:9,natural:9,thimble:-16,tizr:-10,barovd:11,fullzr:-10},refs:["delucchi2021"]},
+  {id:"budget_high",when:i=>i.budget==="high",d:{toronto:0,natural:0,thimble:11,tizr:6,barovd:-2,fullzr:4},refs:["papaspyridakos2024"]},
+  {id:"young",when:i=>i.young,d:{toronto:-2,natural:-3,thimble:13,tizr:8,barovd:-4,fullzr:3},refs:["papaspyridakos2024"]},
+  {id:"elderly",when:i=>i.ageBand==="elderly",d:{toronto:5,natural:3,thimble:-9,tizr:0,barovd:8,fullzr:-3},refs:["hamilton2023","papaspyridakos2024"]},
+  {id:"long_cantilever",when:i=>i.longCantilever,d:{toronto:3,natural:3,thimble:-3,tizr:-7,barovd:0,fullzr:-16},refs:["bevilacqua2011","menini2012"]},
+  {id:"few_implants",when:i=>i.implants==="4",d:{toronto:1,natural:1,thimble:-3,tizr:-4,barovd:2,fullzr:-8},refs:["daudtpolido2018"]},
+  {id:"many_implants",when:i=>i.implants==="6",d:{toronto:2,natural:2,thimble:2,tizr:2,barovd:1,fullzr:3},refs:["daudtpolido2018"]},
+  {id:"arch_maxilla",when:i=>i.arch==="maxilla",d:{toronto:0,natural:2,thimble:2,tizr:2,barovd:0,fullzr:1},refs:["menini2012","tealdo2014"]},
+  {id:"systemic_risk",when:i=>i.systemicRisk,d:{toronto:1,natural:0,thimble:-2,tizr:-2,barovd:6,fullzr:-3},refs:["hamilton2023","gallardo2019"]},
+  {id:"ap_reduced",when:i=>i.apSpread==="reduced",d:{toronto:-1,natural:-1,thimble:-3,tizr:-4,barovd:1,fullzr:-9},refs:["bevilacqua2011","menini2012"]},
+  {id:"bone_soft",when:i=>i.boneQuality==="soft",d:{toronto:2,natural:2,thimble:-2,tizr:-3,barovd:3,fullzr:-6},refs:["menini2012","tealdo2014","menini2013"]},
+  {id:"reject_removable",when:i=>!i.acceptOVD,d:{toronto:0,natural:0,thimble:0,tizr:0,barovd:-45,fullzr:0},refs:["carpentieri2019"]},
+  {id:"accept_removable",when:i=>i.acceptOVD,d:{toronto:0,natural:0,thimble:0,tizr:0,barovd:4,fullzr:0},refs:["carpentieri2019"]},
+  {id:"fullzr_caution",when:()=>true,d:{toronto:0,natural:0,thimble:0,tizr:0,barovd:0,fullzr:-6},refs:["bidra2017"]}
+ ];
+ function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+ function materialOf(o,i){if(o==="fullzr")return"zirconia";if(o==="tizr"||o==="barovd")return"titanium";return(i.space==="reduced"||i.longCantilever)?"crco":"titanium";}
+ function materialDelta(o,mat,i){if(mat==="none")return{delta:0,factor:null};var d=0;if(i.space==="reduced")d+=(mat==="crco"?4:-3);if(i.longCantilever)d+=(mat==="crco"?4:-2);if(i.systemicRisk)d+=(mat==="titanium"?2:-1);if(i.space!=="reduced"&&!i.longCantilever)d+=(mat==="titanium"?1:-1);return{delta:d,factor:(mat==="crco"?"material_crco":"material_ti")};}
+ function score(i){var res={};OPTIONS.forEach(o=>res[o]={score:BASE[o],contribs:[]});
+  FACTORS.forEach(f=>{if(!f.when(i))return;var sc=f.scale?f.scale(i):1;OPTIONS.forEach(o=>{var d=Math.round((f.d[o]||0)*sc);if(d){res[o].score+=d;res[o].contribs.push({factor:f.id,delta:d,refs:f.refs});}});});
+  res.fullzr.score=Math.min(res.fullzr.score,60);if(!i.acceptOVD)res.barovd.score=Math.min(res.barovd.score,3);
+  var out=OPTIONS.map(function(o){var mat=materialOf(o,i),md=materialDelta(o,mat,i),c=res[o].contribs.slice();if(md.delta)c.push({factor:md.factor,delta:md.delta,refs:["gelpi2024","delucchi2021"]});var flex=(o==="toronto"||o==="natural"||o==="thimble"),altMat=flex?(mat==="crco"?"titanium":"crco"):null,altD=altMat?(materialDelta(o,altMat,i).delta-md.delta):0;return {option:o,material:mat,altMaterial:altMat,altDelta:altD,score:clamp(Math.round(res[o].score+md.delta),2,99),contribs:c};});var excl={};if(i.parafSeverity===1){excl.thimble=1;excl.tizr=1;excl.fullzr=1;}if(i.space==="verylow"){excl.tizr=1;excl.barovd=1;}var _al=out.filter(function(r){return !excl[r.option];}).map(function(r){return r.score;});var _bx=_al.length?Math.max.apply(0,_al):99;out.forEach(function(r){if(excl[r.option])r.score=Math.min(r.score,Math.max(2,_bx-2));});return out.sort(function(a,b){return b.score-a.score;});}
+ function frameworkMetal(i){return(i.space==="reduced"||i.longCantilever)?"crco":"titanium";}
+ function advise(i){return{flow:flowchart(i),ranking:score(i),metal:frameworkMetal(i)};}
+ root.RehabEngine={OPTIONS:OPTIONS,FACTORS:FACTORS,HANDLERS:HANDLERS,flowchart:flowchart,score:score,advise:advise,frameworkMetal:frameworkMetal,materialOf:materialOf};
+})(window);
+
+/*=================== DATA ===================*/
+var LOGO='<svg viewBox="0 0 48 48" fill="none"><path d="M11 31c0-11 6-16 13-16s13 5 13 16" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/><circle cx="11" cy="31" r="3" fill="#fff"/><circle cx="24" cy="15" r="3" fill="#fff"/><circle cx="37" cy="31" r="3" fill="#fff"/><circle cx="24" cy="34" r="2.1" fill="#bfe6e6"/></svg>';
+var OPTION_META={toronto:{color:"#2c6f96"},natural:{color:"#3f8f5a"},thimble:{color:"#8a5cc0"},tizr:{color:"#c68a2e"},barovd:{color:"#bf4a30"},fullzr:{color:"#6b7280"}};
+var NODE_POS={young:{x:6.95,y:4.76},paraf_young:{x:5.20,y:4.76},paraf_notyoung:{x:8.65,y:4.76},zirconia_risk:{x:3.52,y:4.76},invest_repair:{x:0.93,y:4.76},invest_age:{x:0.93,y:3.69},tizr_space_L:{x:2.56,y:3.71},tizr_space_R:{x:10.44,y:4.76},antag_zirc_R:{x:9.73,y:3.95},smile:{x:5.32,y:3.73},softcomp_low:{x:5.32,y:2.62},softcomp_high:{x:7.84,y:3.18},accept_ovd:{x:5.14,y:1.84},ovd_space:{x:4.28,y:1.70},hygiene:{x:2.92,y:1.70},thimble:{x:0.93,y:2.77,o:1},tizr_L:{x:2.92,y:2.68,o:1},tizr_R:{x:10.30,y:3.18,o:1},toronto:{x:9.26,y:3.18,o:1},natural:{x:6.78,y:2.62,o:1},barovd:{x:1.58,y:1.70,o:1},toronto_or_long:{x:4.71,y:0.74,o:1}};
+var EDGES=[["young","paraf_young","yes","main"],["young","paraf_notyoung","no","main"],["paraf_young","smile","yes","main"],["paraf_young","zirconia_risk","no","main"],["zirconia_risk","smile","yes","main"],["zirconia_risk","invest_repair","no","main"],["invest_repair","invest_age","yes","main"],["invest_repair","tizr_space_L","no","main"],["invest_age","thimble","yes","main"],["invest_age","tizr_space_L","no","main"],["tizr_space_L","tizr_L","yes","main"],["tizr_space_L","smile","no","main"],["paraf_notyoung","smile","yes","main"],["paraf_notyoung","tizr_space_R","no","main"],["tizr_space_R","antag_zirc_R","yes","main"],["tizr_space_R","smile","no","main"],["antag_zirc_R","smile","yes","main"],["antag_zirc_R","tizr_R","no","main"],["smile","softcomp_low","yes","main"],["smile","softcomp_high","no","main"],["softcomp_low","accept_ovd","yes","main"],["softcomp_low","natural","no","main"],["softcomp_high","toronto","yes","main"],["softcomp_high","natural","no","main"],["accept_ovd","ovd_space","yes","main"],["accept_ovd","toronto_or_long","no","main"],["ovd_space","hygiene","yes","main"],["ovd_space","toronto_or_long","no","main"],["hygiene","barovd","yes","main"],["hygiene","toronto_or_long","no","main"],["thimble","tizr_L","cost","redir"],["tizr_L","smile","cost","redir"],["tizr_R","smile","cost","redir"]];
+var REFERENCES=[
+ {id:"gelpi2024",src:1,authors:"Gelpi F, Alberti C, Bevilacqua M, Montagna P, De Santis D, Tealdo T",year:2024,title:"A novel classification and a chart-making decision flow proposal for fixed full-arch implant-supported prosthesis",journal:"Eur J Musculoskelet Dis",cit:"2024;13(1):17-40",grp:1,topics:["source"]},
+ {id:"haggman2024",q1:1,authors:"Häggman-Henrikson B, Ali D, Aljamal M, Chrcanovic BR",year:2024,title:"Bruxism and dental implants: a systematic review and meta-analysis",journal:"J Oral Rehabil",cit:"2024;51(1):202-217",doi:"10.1111/joor.13567",topics:["parafunction"]},
+ {id:"menini2013",grp:1,authors:"Menini M, Conserva E, Tealdo T, et al.",year:2013,title:"Shock absorption capacity of restorative materials for dental implant prostheses: an in vitro study",journal:"Int J Prosthodont",cit:"2013;26(6):549-556",doi:"10.11607/ijp.3241",topics:["parafunction","material"]},
+ {id:"wong2018",q1:1,authors:"Wong CKK, Narvekar U, Petridis H",year:2018,title:"Prosthodontic complications of metal-ceramic and all-ceramic complete-arch fixed implant prostheses",journal:"J Prosthodont",cit:"2018;28(2):e722-e735",doi:"10.1111/jopr.12797",topics:["esthetic","material"]},
+ {id:"kazemi2014",q1:1,authors:"Kazemi M, Geramipanah F, Negahdari R, Rakhshan V",year:2014,title:"Active tactile sensibility of single-tooth implants versus natural dentition: a split-mouth double-blind RCT",journal:"Clin Implant Dent Relat Res",cit:"2014;16(6):947-955",doi:"10.1111/cid.12053",topics:["antagonist"]},
+ {id:"bidra2017",q1:1,authors:"Bidra AS, Tischler M, Patch C",year:2017,title:"Survival of 2039 complete-arch fixed implant-supported zirconia prostheses",journal:"J Prosthet Dent",cit:"2017;119(2):220-224",doi:"10.1016/j.prosdent.2017.05.004",topics:["esthetic","material"]},
+ {id:"papaspyridakos2024",q1:1,authors:"Papaspyridakos P, Sinada N, Ntovas P, Barmak AB, Chochlidakis K",year:2024,title:"Zirconia full-arch implant prostheses: survival, complications and prosthetic space dimensions",journal:"J Prosthodont",cit:"2024;34(3):271-280",doi:"10.1111/jopr.13922",topics:["space","esthetic"]},
+ {id:"gallardo2019",q1:1,authors:"Gallardo YNR, da Silva-Olivio IR, Gonzaga L, Sesma N, Martin W",year:2019,title:"Clinical outcomes of complete-arch fixed implant-supported prostheses according to the time of loading: a systematic review",journal:"J Prosthodont",cit:"2019;28(9):958-968",doi:"10.1111/jopr.13104",topics:["loading"]},
+ {id:"daudtpolido2018",q1:1,authors:"Daudt Polido W, Aghaloo T, Emmett TW, Taylor TD, Morton D",year:2018,title:"Number of implants placed for complete-arch fixed prostheses: a systematic review and meta-analysis",journal:"Clin Oral Implants Res",cit:"2018;29(S16):154-183",doi:"10.1111/clr.13312",topics:["implants"]},
+ {id:"tealdo2008",grp:1,q1:1,authors:"Tealdo T, Bevilacqua M, Pera F, Menini M, et al.",year:2008,title:"Immediate function with fixed implant-supported maxillary dentures: a 12-month pilot study",journal:"J Prosthet Dent",cit:"2008;99(5):351-360",doi:"10.1016/S0022-3913(08)60082-7",topics:["loading"]},
+ {id:"bevilacqua2011",grp:1,q1:1,authors:"Bevilacqua M, Tealdo T, Menini M, Pera F, et al.",year:2011,title:"Influence of cantilever length and implant inclination on stress distribution in maxillary implant-supported fixed dentures",journal:"J Prosthet Dent",cit:"2011;105(1):5-13",doi:"10.1016/S0022-3913(10)60182-5",topics:["material","implants"]},
+ {id:"menini2012",grp:1,q1:1,authors:"Menini M, Signori A, Tealdo T, Bevilacqua M, Pera F, et al.",year:2012,title:"Tilted implants in the immediate loading rehabilitation of the maxilla: a systematic review",journal:"J Dent Res",cit:"2012;91(9):821-827",doi:"10.1177/0022034512455802",topics:["implants","loading"]},
+ {id:"tealdo2014",grp:1,authors:"Tealdo T, Menini M, Bevilacqua M, Pera F, Pesce P, et al.",year:2014,title:"Immediate versus delayed loading of dental implants in edentulous maxillae: a 6-year prospective study",journal:"Int J Prosthodont",cit:"2014;27(3):207-214",doi:"10.11607/ijp.3569",topics:["loading"]},
+ {id:"deangelis2023",grp:1,authors:"De Angelis N, Pesce P, De Lorenzi M, Menini M",year:2023,title:"Prosthetic marginal fit and implant survival for conventional and digital workflows in full-arch immediate loading",journal:"J Clin Med",cit:"2023;12(10):3452",doi:"10.3390/jcm12103452",topics:["digital"]},
+ {id:"pesce2023",grp:1,authors:"Pesce P, Menini M, Bagnasco F, Gamalero M, Pera F, Tealdo T",year:2023,title:"Outcomes of zygomatic implants combined with anterior regular implants",journal:"Int J Oral Maxillofac Implants",cit:"2023;38(2):251-258",doi:"10.11607/jomi.9791",topics:["implants"]},
+ {id:"bagnasco2024",grp:1,authors:"Bagnasco F, Pesce P, Baldi D, Motta F, Pera F, De Angelis N, Menini M",year:2024,title:"External hex inclined shoulder implants in full-arch immediate loading rehabilitations of the maxilla",journal:"Dent J",cit:"2024;12(5):131",doi:"10.3390/dj12050131",topics:["implants"]},
+ {id:"carpentieri2019",q1:1,authors:"Carpentieri J, Greenstein G, Cavallaro J",year:2019,title:"Hierarchy of restorative space required for different types of dental implant prostheses",journal:"J Am Dent Assoc",cit:"2019;150(8):695-706",doi:"10.1016/j.adaj.2019.04.015",topics:["space"]},
+ {id:"delucchi2021",grp:1,authors:"Delucchi F, De Giovanni E, Pesce P, Bagnasco F, Pera F, Baldi D, Menini M",year:2021,title:"Framework materials for full-arch implant-supported rehabilitations: a systematic review of clinical studies",journal:"Materials (Basel)",cit:"2021;14(12):3251",doi:"10.3390/ma14123251",topics:["material"]},
+ {id:"hamilton2023",q1:1,authors:"Hamilton A, Putra A, Nakapaksin P, Kamolroongwarakul P, Gallucci GO",year:2023,title:"Implant prosthodontic design as a predisposing or precipitating factor for peri-implant disease: a review",journal:"Clin Implant Dent Relat Res",cit:"2023;25(4):710-722",doi:"10.1111/cid.13183",topics:["implants"]},
+ {id:"sriphadungporn2017",q1:1,authors:"Sriphadungporn C, Chamnannidiadha N",year:2017,title:"Perception of smile esthetics by laypeople of different ages",journal:"Prog Orthod",cit:"2017;18(1):8",doi:"10.1186/s40510-017-0162-4",topics:["esthetic"]}
+];
+var CREDITS=[
+ {name:"Pietro Montagna",role:{it:"Developer & ricerca scientifica",en:"Developer & scientific research"},initials:"PM",color:"linear-gradient(135deg,#007e86,#00a6ae)",desc:{it:"Sviluppo dell'app, modello di punteggio e ricerca bibliografica. Co-autore dell'articolo di riferimento.",en:"App development, scoring model and literature research. Co-author of the source article."}},
+ {name:"Federico Gelpi",role:{it:"Ricerca scientifica",en:"Scientific research"},initials:"FG",color:"linear-gradient(135deg,#00a6ae,#7fd6d9)",desc:{it:"Primo autore della classificazione e del flowchart decisionale; contributo al modello di punteggio e alla ricerca bibliografica. Co-autore dell'articolo di riferimento.",en:"First author of the classification and decision flowchart; contributor to the scoring model and literature research. Co-author of the source article."}},
+ {name:"Tiziano Tealdo",role:{it:"Supervisione",en:"Supervision"},initials:"TT",color:"linear-gradient(135deg,#2c6f96,#3a86b0)",desc:{it:"Supervisione scientifica (Columbus Bridge Protocol, carico immediato); contributo al modello di punteggio e alla ricerca bibliografica. Co-autore dell'articolo di riferimento.",en:"Scientific supervision (Columbus Bridge Protocol, immediate loading); contributor to the scoring model and literature research. Co-author of the source article."}}
+];
+var OUTCOME2OPT={toronto:"toronto",natural:"natural",thimble:"thimble",tizr:"tizr",barovd:"barovd",toronto_or_long:"toronto"};
+var OUTCOME_LABEL={it:{toronto_or_long:"Ponte Toronto o denti lunghi su Natural bridge"},en:{toronto_or_long:"Toronto bridge or longer teeth on Natural bridge"}};
+
+var T={
+it:{dir:"ltr",
+ brandSub:"Protesi full-arch · supporto decisionale",
+ nav:{tool:"Tool decisionale",model:"Soluzioni protesiche",refs:"Fonti",credits:"Credits",legal:"Note legali",info:"Come funziona"},
+ introTitle:"Quale riabilitazione full-arch?",
+ introLead:"Rispondi a poche domande. Ottieni l'opzione più indicata e il confronto tra le sei soluzioni.",
+ start:"Inizia",
+ howTitle:"Come si usa", how:["Scorri e rispondi a una domanda per volta.","Leggi l'opzione consigliata e il confronto tra le sei.","Apri le card per il perché, con le fonti.","Scarica il resoconto decisionale in PDF."], scrollHint:"Scorri per iniziare", methodTitle:"Come funziona",
+ qOf:"Domanda {n} di {t}",
+ back:"Indietro", next:"Avanti", seeResults:"Vedi risultati", edit:"Modifica risposte", restart:"Azzera",
+ why:"Perché conta",
+ primaryK:"Opzione consigliata",
+ metaMeso:"Mesostruttura", metaSupra:"Sovrastruttura", metaMetal:"Metallo",
+ metalTi:"Titanio", metalCr:"Cromo-cobalto",
+ rankTitle:"Confronto delle sei soluzioni", rankSub:"tocca per il dettaglio",
+ answersTitle:"Le tue risposte",
+ mapTitle:"Mappa decisionale", mapHint:"In turchese il percorso scelto, in grigio i rami non presi.",
+ legMain:"percorso · Sì/No", legCost:"ripiego economico", legDim:"altri rami",
+ sciTitle:"Basi scientifiche",
+ divergeNote:"Il flowchart indica <b>{flow}</b>; il punteggio favorisce <b>{score}</b>. Opzioni vicine, entrambe valide.",
+ costNote:"Ripiego economico: {chain}.",
+ pdfSec:"Resoconto decisionale (PDF)", pdfName:"Nome del clinico", pdfNamePh:"Cognome e nome", pdfPt:"Paziente", pdfPtPh:"Nome o codice", download:"Scarica PDF",
+ pros:"Pro", cons:"Contro",
+ modelTitle:"Le sei soluzioni protesiche", modelLead:"Mesostruttura e sovrastruttura estetica di ogni disegno protesico.",
+ refsTitle:"Fonti", refsLead:"Studi peer-review a supporto dei parametri, verificati su PubMed.",
+ refAll:"Tutte", refParafunction:"Parafunzioni", refMaterial:"Materiali", refEsthetic:"Estetica", refSpace:"Spazio", refImplants:"Impianti", refGroup:"Gruppo Tealdo",
+ creditsTitle:"Credits", creditsLead:"Chi ha realizzato lo strumento.",
+ legalTitle:"Note legali",
+ infoTitle:"Come funziona",
+ gateTitle:"Prima di iniziare", gateKicker:"Note legali e cliniche", gateOk:"Ho letto e accetto", gateLegal:"Approfondisci"
+},
+en:{dir:"ltr",
+ brandSub:"Full-arch prosthetics · decision support",
+ nav:{tool:"Decision tool",model:"Prosthetic solutions",refs:"Sources",credits:"Credits",legal:"Legal",info:"How it works"},
+ introTitle:"Which full-arch rehabilitation?",
+ introLead:"Answer a few questions. Get the most suitable option and a comparison of all six.",
+ start:"Start",
+ howTitle:"How to use", how:["Scroll and answer one question at a time.","Read the recommended option and the six-way comparison.","Open the cards to see why, with the sources.","Download the PDF decision summary."], scrollHint:"Scroll to start", methodTitle:"How it works",
+ qOf:"Question {n} of {t}",
+ back:"Back", next:"Next", seeResults:"See results", edit:"Edit answers", restart:"Reset",
+ why:"Why it matters",
+ primaryK:"Recommended option",
+ metaMeso:"Framework", metaSupra:"Superstructure", metaMetal:"Metal",
+ metalTi:"Titanium", metalCr:"Cobalt-chromium",
+ rankTitle:"The six solutions compared", rankSub:"tap for details",
+ answersTitle:"Your answers",
+ mapTitle:"Decision map", mapHint:"Teal marks the chosen path, grey the branches not taken.",
+ legMain:"path · Yes/No", legCost:"cost fallback", legDim:"other branches",
+ sciTitle:"Scientific basis",
+ divergeNote:"The flowchart points to <b>{flow}</b>; the score favours <b>{score}</b>. Close options, both valid.",
+ costNote:"Cost fallback: {chain}.",
+ pdfSec:"Decision summary (PDF)", pdfName:"Clinician name", pdfNamePh:"Surname and name", pdfPt:"Patient", pdfPtPh:"Name or code", download:"Download PDF",
+ pros:"Pros", cons:"Cons",
+ modelTitle:"The six prosthetic solutions", modelLead:"Framework and esthetic superstructure of each prosthetic design.",
+ refsTitle:"Sources", refsLead:"Peer-reviewed studies supporting the parameters, verified on PubMed.",
+ refAll:"All", refParafunction:"Parafunction", refMaterial:"Materials", refEsthetic:"Esthetics", refSpace:"Space", refImplants:"Implants", refGroup:"Tealdo group",
+ creditsTitle:"Credits", creditsLead:"Who built the tool.",
+ legalTitle:"Legal notes",
+ infoTitle:"How it works",
+ gateTitle:"Before you start", gateKicker:"Legal and clinical notes", gateOk:"I have read and accept", gateLegal:"Learn more"
+}
+};
+
+var LEGAL={
+ it:"<p><b>Strumento educativo e di supporto alla decisione.</b> Non è un dispositivo medico ai sensi del Reg. (UE) 2017/745 e non fornisce diagnosi né prescrizioni.</p><h4>Uso clinico</h4><p>Le indicazioni derivano da un modello decisionale pubblicato e dalla letteratura scientifica. Non sostituiscono la valutazione del professionista né la visita. Ogni decisione terapeutica, e la relativa responsabilità, resta del clinico sul singolo caso.</p><h4>Privacy e GDPR (Reg. UE 2016/679)</h4><p>Lo strumento non raccoglie né trasmette dati: funziona interamente nel browser, senza server, cookie di profilazione, analytics o tracker di terze parti. L'unico dato salvato in locale è il consenso a questa informativa, per non riproporla. Nome del clinico e del paziente inseriti per il referto sono usati solo in memoria per generare il PDF sul dispositivo, e non vengono memorizzati né inviati. Il paziente è un interessato e il clinico è titolare del trattamento: si raccomanda la minimizzazione, cioè usare iniziali o un codice anziché il nome completo. I collegamenti a DOI e PubMed si aprono solo su clic dell'utente, verso siti esterni con proprie informative.</p><h4>Garanzie</h4><p>Lo strumento è fornito «così com'è», senza garanzie. Gli autori non rispondono di danni derivanti dall'uso. Le presenti note sono informative e non costituiscono consulenza legale.</p>",
+ en:"<p><b>Educational, decision-support tool.</b> It is not a medical device under Reg. (EU) 2017/745 and gives no diagnosis or prescription.</p><h4>Clinical use</h4><p>Recommendations come from a published decision model and the literature. They do not replace the clinician's assessment or the visit. Every treatment decision, and its responsibility, stays with the clinician for the individual case.</p><h4>Privacy and GDPR (Reg. EU 2016/679)</h4><p>The tool collects and transmits no data: it runs entirely in the browser, with no server, profiling cookies, analytics or third-party trackers. The only locally stored item is acceptance of this notice, so it is not shown again. Clinician and patient names entered for the report are used only in memory to generate the PDF on the device, and are neither stored nor sent. The patient is a data subject and the clinician is the controller: data minimisation is recommended, that is using initials or a code rather than the full name. DOI and PubMed links open only on user click, to external sites with their own policies.</p><h4>Warranty</h4><p>The tool is provided «as is», without warranty. The authors are not liable for damages arising from its use. These notes are informational and do not constitute legal advice.</p>"
+};
+
+var OPT_TEXT={
+it:{
+ toronto:{n:"Ponte Toronto",meso:"Titanio o Cromo-cobalto",supra:"Denti del commercio (resina)",d:"Struttura fresata in titanio o cromo-cobalto che porta denti da protesi, con resina a compensare i tessuti persi.",pros:["Economico e collaudato","Riparabile alla poltrona"],cons:["Estetica meno personalizzabile","La resina si abrade"]},
+ natural:{n:"Natural bridge",meso:"Titanio o Cromo-cobalto",supra:"Composito personalizzato",d:"Stessa struttura del Toronto, ma rivestita con denti in composito personalizzati e polimerizzati in mascherina trasparente.",pros:["Estetica su misura","Delicato sull'antagonista"],cons:["Il composito si usura","Manutenzione periodica"]},
+ thimble:{n:"Tecnica Thimble",meso:"Titanio/Cr-Co con monconi",supra:"Corone in zirconia cementate",d:"Struttura in titanio o cromo-cobalto con monconi (thimble) che fanno da pilastri e reggono corone singole in zirconia monolitica, cementate una a una.",pros:["Estetica e durata","Ripari la singola corona"],cons:["Costo elevato","Zirconia da evitare nel bruxista"]},
+ tizr:{n:"Ponte Titanio-Zirconia",meso:"Titanio",supra:"Zirconia monolitica cementata",d:"Struttura in titanio CAD/CAM cementata a una sovrastruttura in zirconia monolitica fresata (o a un rivestimento in zirconia ridotto).",pros:["Estetica e DVO stabile","Buona passività"],cons:["Serve molto spazio","Zirconia da evitare nel bruxista"]},
+ barovd:{n:"Overdenture su barra",meso:"Titanio + controbarra",supra:"Overdenture rimovibile",d:"Barra in titanio CAD/CAM con attacchi a pallina che sostiene una overdenture rimovibile rinforzata in metallo.",pros:["Igiene più facile","Buon supporto dei tessuti"],cons:["È rimovibile","Manutenzione degli attacchi"]},
+ fullzr:{n:"Full Zirconia",meso:"Zirconia monolitica",supra:"Zirconia monolitica/stratificata",d:"Struttura monolitica in zirconia rivestita in zirconia o ceramica; gli autori la sconsigliano per problemi di fit e passività.",pros:["Estetica elevata","Resistente all'usura"],cons:["Sconsigliata: fit critico","Rischio di chipping"]}
+},
+en:{
+ toronto:{n:"Toronto bridge",meso:"Titanium or Cobalt-chromium",supra:"Denture teeth (acrylic)",d:"Milled titanium or cobalt-chromium framework carrying denture teeth, with acrylic to make up for lost soft tissue.",pros:["Economical, proven","Chairside repair"],cons:["Less custom esthetics","Acrylic wears"]},
+ natural:{n:"Natural bridge",meso:"Titanium or Cobalt-chromium",supra:"Custom composite",d:"Same framework as the Toronto, but veneered with custom composite teeth cured in a clear mould.",pros:["Tailored esthetics","Kind to antagonist"],cons:["Composite wears","Periodic upkeep"]},
+ thimble:{n:"Thimble technique",meso:"Titanium/Cr-Co with stumps",supra:"Luted zirconia crowns",d:"Titanium or cobalt-chromium framework with stumps (thimbles) that act as abutments and carry individually luted monolithic zirconia crowns.",pros:["Esthetics and durability","Repair one crown"],cons:["High cost","Avoid zirconia in bruxers"]},
+ tizr:{n:"Titanium-Zirconia bridge",meso:"Titanium",supra:"Luted monolithic zirconia",d:"CAD/CAM titanium framework luted to a milled monolithic zirconia superstructure (or a cut-back zirconia veneer).",pros:["Esthetics, stable OVD","Good passivity"],cons:["Needs generous space","Avoid zirconia in bruxers"]},
+ barovd:{n:"Bar overdenture",meso:"Titanium + counter-bar",supra:"Removable overdenture",d:"CAD/CAM titanium bar with ball attachments supporting a removable, metal-reinforced overdenture.",pros:["Easier hygiene","Good tissue support"],cons:["Removable","Attachment upkeep"]},
+ fullzr:{n:"Full Zirconia",meso:"Monolithic zirconia",supra:"Monolithic/layered zirconia",d:"Monolithic zirconia framework veneered with zirconia or ceramic; the authors advise against it for fit and passivity.",pros:["High esthetics","Wear-resistant"],cons:["Discouraged: fit critical","Chipping risk"]}
+}
+};
+
+var QUESTIONS={
+it:[
+ {sec:"Paziente",id:"ageBand",q:"Età del paziente",opts:[["young","Giovane adulto · ≤ 55 anni"],["adult","Adulto · 56–70 anni"],["elderly","Anziano · > 70 anni"]],sci:"Nel giovane si privilegiano materiali che tengono la DVO negli anni; nell'anziano contano riparabilità e igiene.",refs:["papaspyridakos2024"]},
+ {sec:"Paziente",id:"budget",q:"Disponibilità economica",opts:[["high","Elevata"],["medium","Media"],["low","Ridotta"]],sci:"Con budget ridotto si attivano i ripieghi del flowchart: Thimble → Titanio-Zirconia → Toronto/Natural.",refs:[]},
+ {sec:"Paziente",id:"reducedHygiene",q:"Igiene o destrezza manuale ridotta?",opts:[["no","No"],["yes","Sì"]],sci:"Con poca destrezza l'overdenture rimovibile è più facile da pulire.",refs:[]},
+ {sec:"Funzione",id:"parafunction",q:"Bruxismo o parafunzioni?",opts:[["no","Assente"],["mild","Lieve"],["severe","Severo"]],sci:"Il bruxismo alza il rischio di fallimento (OR ≈ 2,2) e di chipping, in modo proporzionale alla gravità: meglio resina/composito, si penalizza la zirconia occlusale.",refs:["haggman2024","menini2013"]},
+ {sec:"Funzione",id:"antagonist",q:"Arcata antagonista",opts:[["natural_healthy","Denti naturali sani"],["natural_perio","Denti naturali compromessi"],["fixed_impl","Protesi fissa o impianti"],["removable","Rimovibile o mucosa"]],sci:"Contro denti naturali la zirconia, dura e con propriocezione ridotta, può usurare l'antagonista: il composito protegge di più.",refs:["kazemi2014"]},
+ {sec:"Estetica",id:"esthetic",q:"Esigenza estetica",opts:[["high","Alta"],["medium","Media"],["low","Bassa"]],sci:"Ad alta estetica la zirconia rende meglio; il composito basta per richieste più contenute.",refs:["bidra2017","papaspyridakos2024"]},
+ {sec:"Estetica",id:"smile",q:"Linea del sorriso",opts:[["low","Bassa"],["medium","Media"],["high","Alta"]],sci:"Con sorriso alto la giunzione protesi-tessuti si vede; il Toronto va meglio col sorriso basso.",refs:[]},
+ {sec:"Estetica",id:"needSoftComp",q:"Serve compensare i tessuti molli?",opts:[["no","No"],["yes","Sì"]],sci:"Con perdita marcata serve falsa gengiva: Toronto, Natural e overdenture la gestiscono meglio.",refs:[]},
+ {sec:"Anatomia",id:"arch",q:"Arcata da riabilitare",opts:[["maxilla","Mascella"],["mandible","Mandibola"]],sci:"La mascella è più esposta e più critica per il carico immediato; impianti tilted e cantilever corti aiutano.",refs:["menini2012","tealdo2014"]},
+ {sec:"Anatomia",id:"space",q:"Spazio protesico verticale (cresta → piano occlusale)",opts:[["ample","> 15 mm (ampio)"],["adequate","12–15 mm (adeguato)"],["reduced","9–11 mm (ridotto)"],["verylow","< 9 mm (molto ridotto)"]],sci:"L'ibrida chiede ~12–15 mm; Titanio-Zirconia e overdenture su barra sono i più esigenti in altezza. Sotto i 9 mm restano praticabili solo i profili bassi.",refs:["carpentieri2019","papaspyridakos2024"]},
+ {sec:"Anatomia",id:"implants",q:"Numero di impianti",opts:[["4","4"],["5","5"],["6","6+"]],sci:"Nell'arcata fissa completa ≥5 e <5 impianti hanno sopravvivenza simile; numero e distribuzione pesano su cantilever e materiale.",refs:["daudtpolido2018"]},
+ {sec:"Anatomia",id:"longCantilever",q:"Cantilever posteriore esteso?",opts:[["no","No"],["yes","Sì"]],sci:"Cantilever lunghi aumentano lo stress: si preferisce il Cromo-cobalto e si penalizza la full-zirconia.",refs:["bevilacqua2011"]},
+ {sec:"Anatomia",id:"apSpread",q:"Distribuzione degli impianti (spread A-P)",opts:[["ample","Ampia"],["moderate","Moderata"],["reduced","Ridotta"]],sci:"Con spread antero-posteriore ridotto la leva sui terminali cresce (cantilever ≈ 1,5× A-P): penalizzati i disegni rigidi/monolitici.",refs:["bevilacqua2011","menini2012"]},
+ {sec:"Anatomia",id:"boneQuality",q:"Qualità ossea",opts:[["dense","Densa"],["normal","Normale"],["soft","Tenera"]],sci:"Osso tenero (tipico mascellare) trasmette più stress: meglio superfici che ammortizzano, meno la zirconia monolitica.",refs:["menini2012","tealdo2014"]},
+ {sec:"Anatomia",id:"systemicRisk",q:"Rischio sistemico o biologico rilevante?",opts:[["no","No"],["yes","Sì"]],sci:"Col rischio biologico si preferiscono soluzioni mantenibili e ritrattabili.",refs:[]},
+ {sec:"Preferenze",id:"acceptOVD",q:"Il paziente accetta una soluzione rimovibile?",opts:[["yes","Sì"],["no","No"]],sci:"È il prerequisito per l'overdenture su barra; se rifiutata, l'opzione decade.",refs:[]},
+ {sec:"Preferenze",id:"willingInvest",q:"Disposto a spendere di più all'inizio per riparazioni più semplici?",opts:[["auto","Automatico"],["yes","Sì"],["no","No"]],sci:"È la logica della Thimble. In «Automatico» lo deduco dal budget.",refs:[]},
+ {sec:"Preferenze",id:"investPractical",q:"L'investimento a lungo termine ha senso pratico?",opts:[["auto","Automatico"],["yes","Sì"],["no","No"]],sci:"Bilancia costo e aspettativa. In «Automatico» lo deduco da età e budget.",refs:[]}
+],
+en:[
+ {sec:"Patient",id:"ageBand",q:"Patient age",opts:[["young","Young adult · ≤ 55 yrs"],["adult","Adult · 56–70 yrs"],["elderly","Elderly · > 70 yrs"]],sci:"In the young, materials that hold the OVD for years are preferred; in the elderly, repairability and hygiene matter.",refs:["papaspyridakos2024"]},
+ {sec:"Patient",id:"budget",q:"Economic resources",opts:[["high","High"],["medium","Medium"],["low","Reduced"]],sci:"A reduced budget triggers the flowchart fallbacks: Thimble → Titanium-Zirconia → Toronto/Natural.",refs:[]},
+ {sec:"Patient",id:"reducedHygiene",q:"Reduced hygiene or manual dexterity?",opts:[["no","No"],["yes","Yes"]],sci:"With low dexterity the removable overdenture is easier to clean.",refs:[]},
+ {sec:"Function",id:"parafunction",q:"Bruxism or parafunction?",opts:[["no","None"],["mild","Mild"],["severe","Severe"]],sci:"Bruxism raises failure risk (OR ≈ 2.2) and chipping, proportionally to severity: resin/composite are better, occlusal zirconia is penalised.",refs:["haggman2024","menini2013"]},
+ {sec:"Function",id:"antagonist",q:"Opposing arch",opts:[["natural_healthy","Healthy natural teeth"],["natural_perio","Compromised natural teeth"],["fixed_impl","Fixed prosthesis or implants"],["removable","Removable or mucosa"]],sci:"Against natural teeth, hard zirconia with reduced proprioception can wear the antagonist: composite protects more.",refs:["kazemi2014"]},
+ {sec:"Esthetics",id:"esthetic",q:"Esthetic demand",opts:[["high","High"],["medium","Medium"],["low","Low"]],sci:"For high esthetics zirconia performs better; composite is enough for milder demands.",refs:["bidra2017","papaspyridakos2024"]},
+ {sec:"Esthetics",id:"smile",q:"Smile line",opts:[["low","Low"],["medium","Medium"],["high","High"]],sci:"With a high smile the prosthesis-tissue junction shows; the Toronto suits a low smile better.",refs:[]},
+ {sec:"Esthetics",id:"needSoftComp",q:"Soft-tissue compensation needed?",opts:[["no","No"],["yes","Yes"]],sci:"With marked loss you need false gingiva: Toronto, Natural and overdenture handle it better.",refs:[]},
+ {sec:"Anatomy",id:"arch",q:"Arch to rehabilitate",opts:[["maxilla","Maxilla"],["mandible","Mandible"]],sci:"The maxilla is more exposed and critical for immediate loading; tilted implants and short cantilevers help.",refs:["menini2012","tealdo2014"]},
+ {sec:"Anatomy",id:"space",q:"Vertical prosthetic space (ridge → occlusal plane)",opts:[["ample","> 15 mm (ample)"],["adequate","12–15 mm (adequate)"],["reduced","9–11 mm (reduced)"],["verylow","< 9 mm (very reduced)"]],sci:"The hybrid needs ~12–15 mm; Titanium-Zirconia and bar overdenture are the most height-hungry. Below 9 mm only low profiles remain feasible.",refs:["carpentieri2019","papaspyridakos2024"]},
+ {sec:"Anatomy",id:"implants",q:"Number of implants",opts:[["4","4"],["5","5"],["6","6+"]],sci:"For the fixed complete arch, ≥5 and <5 implants have similar survival; number and layout weigh on cantilever and material.",refs:["daudtpolido2018"]},
+ {sec:"Anatomy",id:"longCantilever",q:"Extended posterior cantilever?",opts:[["no","No"],["yes","Yes"]],sci:"Long cantilevers raise stress: cobalt-chromium is preferred and full-zirconia penalised.",refs:["bevilacqua2011"]},
+ {sec:"Anatomy",id:"apSpread",q:"Implant distribution (A-P spread)",opts:[["ample","Ample"],["moderate","Moderate"],["reduced","Reduced"]],sci:"With a reduced anteroposterior spread leverage on the terminals rises (cantilever ≈ 1.5× A-P): rigid/monolithic designs are penalised.",refs:["bevilacqua2011","menini2012"]},
+ {sec:"Anatomy",id:"boneQuality",q:"Bone quality",opts:[["dense","Dense"],["normal","Normal"],["soft","Soft"]],sci:"Soft bone (typical maxilla) transmits more stress: cushioning surfaces are preferred over monolithic zirconia.",refs:["menini2012","tealdo2014"]},
+ {sec:"Anatomy",id:"systemicRisk",q:"Relevant systemic or biological risk?",opts:[["no","No"],["yes","Yes"]],sci:"With biological risk, maintainable and retrievable solutions are preferred.",refs:[]},
+ {sec:"Preferences",id:"acceptOVD",q:"Does the patient accept a removable solution?",opts:[["yes","Yes"],["no","No"]],sci:"It is the prerequisite for the bar overdenture; if refused, the option is dropped.",refs:[]},
+ {sec:"Preferences",id:"willingInvest",q:"Willing to spend more upfront for simpler repairs?",opts:[["auto","Automatic"],["yes","Yes"],["no","No"]],sci:"This is the Thimble logic. In \"Automatic\" I infer it from the budget.",refs:[]},
+ {sec:"Preferences",id:"investPractical",q:"Does the long-term investment make practical sense?",opts:[["auto","Automatic"],["yes","Yes"],["no","No"]],sci:"Balances cost and life expectancy. In \"Automatic\" I infer it from age and budget.",refs:[]}
+]
+};
+
+var WHY={
+it:{
+ ageBand:"<p>L'età fissa l'orizzonte biologico su cui si progetta la riabilitazione. Nel giovane la riabilitazione deve restare stabile per decenni: si privilegiano materiali che resistono all'usura e mantengono la dimensione verticale, cioè le sovrastrutture in zirconia (Thimble, Titanio-Zirconia), che conservano forma e colore nel tempo [papaspyridakos2024]. Resina e composito, al contrario, si abradono sotto i carichi masticatori e negli anni possono ridurre la DVO.</p><p>Nell'anziano il bilancio si sposta: l'aspettativa di vita più breve rende poco vantaggioso un investimento costoso e a lunghissima durata, mentre diventano prioritarie la riparabilità e soprattutto l'igiene, spesso compromessa dalla ridotta destrezza manuale [hamilton2023]. È la ragione per cui, a parità di richiesta estetica, un paziente molto anziano viene indirizzato verso soluzioni più semplici o rimovibili anziché verso la Thimble, il cui vantaggio (riparazione della singola corona) rende meno nel tempo residuo [gelpi2024]. Anche l'aspettativa estetica conta a ogni età: la percezione dell'estetica del sorriso è documentata pure nell'anziano e va indagata caso per caso [sriphadungporn2017].</p>",
+ budget:"<p>La disponibilità economica pesa fin dall'inizio: nel modello attiva i ripieghi «troppo costoso». La Tecnica Thimble ha il costo di realizzazione più alto, perché combina una mesostruttura con monconi e corone singole in zirconia; se non sostenibile, si ripiega sul Ponte Titanio-Zirconia e, se ancora eccessivo, su Toronto o Natural bridge [gelpi2024].</p><p>Il costo va letto sull'intero ciclo di vita più che sulla spesa iniziale. La spesa maggiore della Thimble compra riparazioni per singola unità: una corona scheggiata si ricementa senza rifare l'intera protesi. Anche il metallo incide: il cromo-cobalto è di norma più economico e più efficiente in spazio del titanio fresato, pur restando affidabile [delucchi2021]. L'overdenture su barra resta l'opzione fissa-rimovibile più contenuta, utile quando l'economia è il vincolo dominante.</p>",
+ reducedHygiene:"<p>La detergibilità è tra i fattori che più incidono sulla salute peri-implantare: contorni protesici poco accessibili e igiene domiciliare inadeguata sono fattori precipitanti di mucosite e perimplantite [hamilton2023]. Quando la destrezza manuale è ridotta (anziano fragile, disabilità, deficit neuromotori), la capacità di detergere l'intradosso di una protesi fissa full-arch crolla.</p><p>In questi casi l'overdenture rimovibile offre il potenziale igienico più alto: il paziente o il caregiver rimuovono il manufatto e puliscono direttamente sia la protesi sia la barra e la mucosa. È un vantaggio che, con il miglior supporto dei tessuti, giustifica la scelta del rimovibile anche quando l'estetica non lo imporrebbe. Nelle soluzioni fisse, un disegno con profili detergibili e intradosso convesso e lucido limita la ritenzione di placca [hamilton2023].</p>",
+ parafunction:"<p>Il bruxismo è un fattore di rischio meccanico e biologico. Una revisione sistematica con meta-analisi mostra che i probabili bruxisti hanno un rischio di fallimento implantare significativamente più alto dei non bruxisti (OR ≈ 2,2) [haggman2024]. Il sovraccarico si scarica anche sulla protesi: la complicanza tecnica più frequente delle riabilitazioni full-arch è la frattura o il chipping del rivestimento estetico [wong2018], e la zirconia, per l'elevata durezza, tende a scheggiarsi anziché usurarsi.</p><p>Si aggiunge la ridotta propriocezione peri-implantare rispetto al dente naturale [kazemi2014]: manca il feedback che nel dente limita il carico, quindi il sovraccarico parafunzionale non si autolimita. Le superfici occlusali in resina o composito assorbono l'impatto e proteggono l'interfaccia osso-impianto [menini2013]. Nel bruxista si privilegiano quindi le ibride che ammortizzano il carico, Toronto (resina) e Natural bridge (composito), mentre la zirconia occlusale (Thimble, Titanio-Zirconia, Full Zirconia) viene penalizzata di più; utile una placca notturna.</p>",
+ antagonist:"<p>La superficie occlusale va scelta in funzione dell'arcata che la contatta. Contro denti naturali, soprattutto se già indeboliti dal parodonto, la zirconia monolitica, dura e rigida, può accelerarne l'usura; e poiché l'impianto ha propriocezione ridotta [kazemi2014], il carico non viene smorzato come tra denti naturali. Il composito è più protettivo e lavora da ammortizzatore [menini2013].</p><p>Contro un antagonista a sua volta implanto-protesico, o comunque rigido, entrambe le arcate hanno feedback ridotto e le forze salgono: conviene una superficie occlusale resiliente e un'occlusione regolata con cura. Contro una protesi rimovibile o una mucosa, i carichi sono più bassi e il vincolo si allenta. In sintesi: più l'antagonista è naturale e vulnerabile, più si preferisce il composito e si evita la zirconia occlusale [wong2018].</p>",
+ esthetic:"<p>Con richiesta estetica alta la zirconia offre traslucenza e stabilità cromatica superiori e, nelle riabilitazioni full-arch monolitiche, mostra sopravvivenze molto elevate [bidra2017][papaspyridakos2024]. La ceramica stratificata dà il risultato più naturale ma è più soggetta a chipping [wong2018]; la zirconia monolitica cede qualcosa in estetica per guadagnare in resistenza.</p><p>Per richieste intermedie, i denti in composito personalizzato (Natural bridge) sono un buon compromesso: si caratterizzano e si riparano facilmente, ma nel tempo si abradono e possono discromizzarsi. I denti del commercio (Toronto) sono l'opzione più economica e meno personalizzabile. La percezione dell'estetica del sorriso, però, è soggettiva e varia con l'età di chi osserva [sriphadungporn2017]: la scelta va condivisa con il paziente e incrociata con parafunzioni, antagonista e linea del sorriso.</p>",
+ smile:"<p>La linea del sorriso stabilisce quanto si vede della giunzione tra protesi e mucosa e dell'eventuale gengiva finta. Con un sorriso alto o gengivale la transizione resta esposta: una giunzione resina-metallo poco curata, tipica del Toronto classico, può risultare antiestetica, e serve una gestione accurata dell'emergenza e del rosa. L'esposizione gengivale pesa sulla percezione estetica, che varia anche con l'età dell'osservatore [sriphadungporn2017].</p><p>Con un sorriso basso la transizione è nascosta dal labbro: la libertà di disegno aumenta e il Toronto è ben tollerato. La linea del sorriso si valuta sempre insieme alla necessità di compensare i tessuti molli, perché è la combinazione dei due a decidere se e quanto rosa mostrare e con quale materiale realizzarlo [gelpi2024].</p>",
+ needSoftComp:"<p>Dopo il riassorbimento, se i colletti dei denti protesici cadono lontani dalla cresta (indicativamente oltre il 25% della lunghezza del dente, o con sondaggi profondi nelle dentature terminali), occorre gengiva finta per ripristinare supporto del labbro, fonetica ed emergenza corretta [gelpi2024].</p><p>I disegni con flangia (Toronto, Natural bridge e soprattutto l'overdenture) integrano bene il rosa e offrono il miglior supporto dei tessuti; le soluzioni puramente dento-portate come Thimble e Titanio-Zirconia gestiscono meno bene grandi volumi di gengiva. Attenzione a non sovra-contornare per riempire lo spazio: profili troppo pieni ostacolano la detersione e favoriscono la malattia peri-implantare [hamilton2023].</p>",
+ arch:"<p>Mascella e mandibola pongono problemi diversi. Il mascellare è più esposto esteticamente e ha di solito osso più tenero: il carico immediato dipende dalla stabilità primaria, dallo splintaggio rigido e dall'uso di impianti tilted, che accorciano i cantilever e distribuiscono meglio lo stress [menini2012][bevilacqua2011]. Uno studio prospettico a 6 anni conferma esiti sovrapponibili tra carico immediato e differito nel mascellare edentulo [tealdo2014].</p><p>La mandibola, più densa, è dominata dalla funzione. Nelle atrofie mascellari gravi, impianti tilted o zigomatici permettono la riabilitazione fissa evitando le rigenerazioni [pesce2023]. L'arcata da trattare orienta quindi sia la strategia chirurgica sia, indirettamente, la scelta protesica e del materiale.</p>",
+ space:"<p>Lo spazio protesico verticale, cioè dalla cresta al piano occlusale meno lo spazio libero, decide quali disegni sono realizzabili ed evita chipping e fratture da spessori insufficienti. Esiste una gerarchia di spazio minimo: circa 15 mm per l'ibrida avvitata, 11 mm per l'overdenture su barra, 7-8 mm per le soluzioni cementate e 7 mm per l'overdenture [carpentieri2019]. La zirconia monolitica richiede spessori e aree di connessione adeguati per resistere alla frattura [papaspyridakos2024].</p><p>Quando lo spazio è ridotto, il cromo-cobalto è più efficiente del titanio a parità di rigidità [delucchi2021] e consente strutture più sottili; le opzioni più esigenti in altezza (Titanio-Zirconia e overdenture su barra) diventano poco praticabili. Per questo lo spazio va misurato prima di impostare il caso [carpentieri2019].</p>",
+ implants:"<p>Numero e distribuzione degli impianti governano cantilever, ripartizione del carico e scelta del materiale. Una revisione sistematica con meta-analisi non ha trovato differenze significative di sopravvivenza tra meno di cinque e cinque o più impianti per arcata a supporto di protesi fisse complete [daudtpolido2018]. A fare la differenza è la loro posizione, più del numero.</p><p>Più impianti, ben distribuiti, accorciano i cantilever e riducono lo stress su impianti e struttura [bevilacqua2011]. Con pochi impianti (per esempio quattro, tipo All-on-4) cresce la richiesta di adattamento passivo: su una struttura splintata il minimo disadattamento non si «avvita via» e diventa causa di complicanze, perciò i disegni in zirconia monolitica, meno tolleranti al misfit, vengono penalizzati mentre l'ibrida metallo-resina resta più indulgente. Il dato va integrato con il cantilever previsto e con il materiale.</p>",
+ longCantilever:"<p>Un cantilever distale esteso funziona da braccio di leva e amplifica lo stress sugli impianti terminali, sulla struttura e sulle viti. L'analisi agli elementi finiti mostra che inclinare gli impianti distali per accorciare il cantilever riduce nettamente lo stress sull'osso peri-implantare, fino a oltre il 70% nelle configurazioni più inclinate [bevilacqua2011].</p><p>Gli impianti tilted sono un modo predicibile per accorciare i cantilever ed evitare le rigenerazioni, con sopravvivenza e perdita ossea marginale sovrapponibili agli assiali [menini2012]. Una regola pratica limita il cantilever a circa 1,5 volte lo spread antero-posteriore, da ridurre ancora con le parafunzioni. Con cantilever lunghi si preferisce una struttura metallica rigida (cromo-cobalto piu del titanio) e si penalizzano i disegni in zirconia monolitica, sia il Ponte Titanio-Zirconia sia la Full Zirconia, perche la zirconia e fragile alla leva e al minimo disadattamento e richiede rapporti di cantilever e connessioni rigorosi per non fratturarsi [papaspyridakos2024].</p>",
+ apSpread:"<p>Lo spread antero-posteriore è la distanza fra gli impianti più anteriori e i più distali: più è ampio, più la protesi resiste alla leva dei cantilever. Una regola classica limita il cantilever a circa 1,5 volte lo spread A-P, da ridurre con le parafunzioni [bevilacqua2011]. Gli impianti tilted servono proprio ad allargare lo spread e accorciare i cantilever [menini2012].</p><p>Con spread ridotto (impianti ravvicinati, per esempio quattro molto vicini) la leva sui terminali aumenta e i disegni rigidi e monolitici, meno tolleranti al sovraccarico e al disadattamento, vengono penalizzati; si preferiscono strutture metalliche e, quando indicato, soluzioni che ammortizzano o distribuiscono il carico.</p>",boneQuality:"<p>La qualità ossea governa la stabilità primaria e la quota di stress trasmessa all'interfaccia. Il mascellare posteriore ha spesso osso tenero (tipo III-IV), dove il carico immediato dipende da stabilità primaria, splintaggio rigido e impianti tilted che accorciano i cantilever [menini2012][tealdo2014].</p><p>Su osso tenero conviene attenuare i picchi di carico: le superfici occlusali in resina o composito ammortizzano [menini2013] e le soluzioni che distribuiscono il carico sono più prudenti, mentre la zirconia monolitica, rigida e fragile al disadattamento, viene penalizzata. Su osso denso il vincolo si allenta e la scelta torna guidata da estetica, spazio e materiale.</p>",
+ systemicRisk:"<p>Un rischio sistemico o biologico rilevante (diabete scompensato, immunodepressione, terapie antiriassorbitive con rischio di MRONJ, tabagismo importante) aumenta le complicanze biologiche e sposta le priorità verso disegni mantenibili, ritrattabili e facili da detergere [hamilton2023].</p><p>Le protesi avvitate sono ritrattabili e permettono ispezione e re-intervento; dove l'igiene è a rischio, l'overdenture rimovibile agevola la manutenzione. Il carico immediato resta possibile in casi selezionati, ma richiede una selezione più severa e un follow-up ravvicinato [gallardo2019]. L'ibrida metallo-resina, riparabile alla poltrona, semplifica la gestione delle complicanze, mentre i disegni monolitici complessi si prestano meno. In questi pazienti la scelta protesica privilegia la gestibilità nel tempo rispetto alla massima complessità.</p>",
+ acceptOVD:"<p>L'accettazione di un manufatto rimovibile è il presupposto dell'overdenture su barra: se il paziente desidera una soluzione fissa, quel ramo decade a prescindere dai suoi vantaggi igienici. È una decisione clinica da condividere con il paziente.</p><p>All'overdenture va spiegata la manutenzione (usura degli attacchi, ribasature periodiche), a fronte però di una detergibilità superiore e di un ottimo supporto di labbro e tessuti, particolarmente utile nelle forti atrofie [hamilton2023][carpentieri2019]. Chi rifiuta il rimovibile va indirizzato verso le soluzioni fisse, accettandone i compromessi di igiene e ingombro.</p>",
+ willingInvest:"<p>Questa domanda cattura la logica della Tecnica Thimble: un investimento iniziale maggiore compra corone singole in zirconia cementate su una mesostruttura, così la singola unità scheggiata o usurata si sostituisce a basso costo senza rifare l'intera protesi. In un paziente giovane e con mezzi, questo migliora il costo sull'intero ciclo di vita e la stabilità della DVO [papaspyridakos2024].</p><p>Se il paziente non è disposto all'esborso iniziale, si scelgono soluzioni meno costose (Toronto, Natural) o il Titanio-Zirconia, che offre estetica e stabilità con una riparabilità intermedia [gelpi2024]. In modalità «Automatico» il dato è dedotto dal budget dichiarato.</p>",
+ investPractical:"<p>Qui si bilancia l'investimento con l'aspettativa di vita e l'orizzonte biologico. Un disegno costoso e ultra-durevole come la Thimble rende sempre meno all'aumentare dell'età, dove contano di più riparabilità, igiene e contenimento della spesa: è la ragione per cui, nella casistica, una paziente di 75 anni è stata spostata dalla Thimble al Titanio-Zirconia [gelpi2024].</p><p>Nel giovane, al contrario, l'orizzonte lungo giustifica l'investimento in un materiale che conserva la DVO per anni [papaspyridakos2024]. La valutazione resta interpretativa e va calata sul singolo paziente; in modalità «Automatico» viene dedotta da età e budget.</p>"
+},
+en:{
+ ageBand:"<p>Age sets the biological horizon you design for. In young patients the rehabilitation must stay stable for decades: wear-resistant materials that hold the vertical dimension are preferred, that is zirconia superstructures (Thimble, Titanium-Zirconia), which keep shape and colour over time [papaspyridakos2024]. Resin and composite abrade under masticatory load and, over years, can lower the OVD.</p><p>In the elderly the balance shifts: a shorter life expectancy makes an expensive, ultra-durable investment less worthwhile, while repairability and above all hygiene, often limited by reduced manual dexterity, become the priority [hamilton2023]. That is why, for the same esthetic demand, a very old patient is steered toward simpler or removable solutions rather than the Thimble, whose single-crown-repair advantage pays off less over the remaining years [gelpi2024]. Esthetic expectations matter at any age: perception of smile esthetics is documented in older patients too and should be explored case by case [sriphadungporn2017].</p>",
+ budget:"<p>Economic resources weigh from the outset: in the model they trigger the 'too expensive' fallbacks. The Thimble technique has the highest fabrication cost, because it combines a stump mesostructure with individual zirconia crowns; if unaffordable it steps down to the Titanium-Zirconia bridge and, if still too much, to the Toronto or Natural bridge [gelpi2024].</p><p>Cost should be read over the whole life cycle rather than at delivery alone. The Thimble's higher price buys per-unit repairs: a chipped crown is re-cemented without remaking the whole prosthesis. Metal choice matters too: cobalt-chromium is usually cheaper and more space-efficient than milled titanium while remaining reliable [delucchi2021]. The bar overdenture stays the most affordable fixed-removable option when cost is the dominant constraint.</p>",
+ reducedHygiene:"<p>Cleansability is among the factors that most affect peri-implant health: poorly accessible restorative contours and inadequate home care are precipitating factors for mucositis and peri-implantitis [hamilton2023]. When manual dexterity is reduced (frail elderly, disability, neuromotor deficits), the ability to clean the intaglio of a fixed full-arch prosthesis drops sharply.</p><p>Here the removable overdenture offers the highest hygienic potential: the patient or caregiver removes the device and cleans the prosthesis, the bar and the mucosa directly. This advantage, with better tissue support, can justify a removable even when esthetics would not demand it. In fixed designs, cleansable profiles and a convex, polished intaglio limit plaque retention [hamilton2023].</p>",
+ parafunction:"<p>Bruxism is a mechanical and biological risk factor. A systematic review with meta-analysis shows that probable bruxers carry a significantly higher risk of implant failure than non-bruxers (OR ≈ 2.2) [haggman2024]. Overload also hits the prosthesis: the most frequent technical complication of full-arch rehabilitations is veneer fracture or chipping [wong2018], and zirconia, being very hard, tends to chip rather than wear.</p><p>Add the reduced peri-implant proprioception compared with a natural tooth [kazemi2014]: the feedback that limits load on a tooth is missing, so parafunctional overload is not self-limiting. Resin or composite occlusal surfaces absorb impact and protect the bone-implant interface [menini2013]. In bruxers, therefore, the cushioning hybrids are preferred, Toronto (acrylic) and Natural bridge (composite), while occlusal zirconia (Thimble, Titanium-Zirconia, Full Zirconia) is penalised more, and a night guard is considered.</p>",
+ antagonist:"<p>The occlusal surface should match the arch it meets. Against natural teeth, especially if periodontally weakened, hard, rigid monolithic zirconia can accelerate their wear; and because the implant has reduced proprioception [kazemi2014], the load is not damped as it is between natural teeth. Composite is more protective and acts as a shock absorber [menini2013].</p><p>Against an antagonist that is itself implant-borne, or otherwise rigid, both arches have reduced feedback and forces rise: a resilient occlusal surface and carefully adjusted occlusion are preferable. Against a removable prosthesis or mucosa, loads are lower and the constraint relaxes. In short: the more natural and vulnerable the antagonist, the more composite is preferred and occlusal zirconia avoided [wong2018].</p>",
+ esthetic:"<p>When esthetic demand is high, zirconia offers superior translucency and colour stability and, in monolithic full-arch rehabilitations, shows very high survival [bidra2017][papaspyridakos2024]. Layered ceramic gives the most natural result but chips more [wong2018]; monolithic zirconia trades some esthetics for strength.</p><p>For moderate demands, customized composite teeth (Natural bridge) are a good compromise: easy to characterise and repair, but they abrade and may discolour over time. Denture teeth (Toronto) are the most economical and least customizable. Perception of smile esthetics, though, is subjective and varies with the observer's age [sriphadungporn2017]: the choice should be shared with the patient and crossed with parafunction, antagonist and smile line.</p>",
+ smile:"<p>The smile line sets how much of the prosthesis-mucosa junction and of any false gingiva is visible. With a high or gummy smile the transition stays exposed: a poorly finished resin-metal junction, typical of the classic Toronto, can look unesthetic, and careful management of emergence and pink is needed. Gingival display weighs on esthetic perception, which also varies with the observer's age [sriphadungporn2017].</p><p>With a low smile line the lip hides the transition: design freedom increases and the Toronto is well tolerated. The smile line is always assessed together with the need for soft-tissue compensation, because it is their combination that decides whether and how much pink to show, and in which material [gelpi2024].</p>",
+ needSoftComp:"<p>After resorption, if the cervical margins of the prosthetic teeth fall far from the ridge (roughly beyond 25% of tooth length, or with deep probing in failing dentitions), false gingiva is needed to restore lip support, phonetics and correct emergence [gelpi2024].</p><p>Flange designs (Toronto, Natural bridge and above all the overdenture) integrate pink well and give the best tissue support; purely tooth-borne solutions such as Thimble and Titanium-Zirconia handle large gingival volumes less well. Take care not to over-contour to fill space: over-full profiles hinder cleaning and favour peri-implant disease [hamilton2023].</p>",
+ arch:"<p>Maxilla and mandible pose different problems. The maxilla is more esthetically exposed and usually has softer bone: immediate loading depends on primary stability, rigid splinting and tilted implants, which shorten cantilevers and spread stress [menini2012][bevilacqua2011]. A 6-year prospective study confirms comparable outcomes for immediate and delayed loading in the edentulous maxilla [tealdo2014].</p><p>The mandible, denser, is function-driven. In severe maxillary atrophy, tilted or zygomatic implants allow fixed rehabilitation while avoiding grafting [pesce2023]. The arch to treat therefore guides both the surgical strategy and, indirectly, the prosthetic and material choice.</p>",
+ space:"<p>Vertical prosthetic space, that is from the ridge to the occlusal plane minus the freeway space, decides which designs are feasible and prevents chipping and fracture from thin sections. There is a minimum-space hierarchy: about 15 mm for the screw-retained hybrid, 11 mm for the bar overdenture, 7-8 mm for cemented solutions and 7 mm for the overdenture [carpentieri2019]. Monolithic zirconia needs adequate thickness and connector area to resist fracture [papaspyridakos2024].</p><p>When space is reduced, cobalt-chromium is more efficient than titanium for the same rigidity [delucchi2021] and allows thinner structures; the most height-hungry options (Titanium-Zirconia and bar overdenture) become impractical. So the space should be measured before planning the case [carpentieri2019].</p>",
+ implants:"<p>Implant number and distribution govern cantilever, load sharing and material choice. A systematic review with meta-analysis found no significant survival difference between fewer than five and five or more implants per arch supporting complete fixed prostheses [daudtpolido2018]. What matters is their position, more than the number.</p><p>More, well-distributed implants shorten cantilevers and reduce stress on implants and framework [bevilacqua2011]. With few implants (for example four, All-on-4) the demand for passive fit rises: on a splinted framework the slightest misfit cannot be screwed away and becomes a source of complications, so monolithic-zirconia designs, less tolerant of misfit, are penalised while the metal-acrylic hybrid stays more forgiving. Read the figure together with the planned cantilever and material.</p>",
+ longCantilever:"<p>An extended distal cantilever acts as a lever arm and amplifies stress on the terminal implants, the framework and the screws. Finite-element analysis shows that tilting the distal implants to shorten the cantilever markedly reduces peri-implant bone stress, by over 70% in the most inclined configurations [bevilacqua2011].</p><p>Tilted implants are a predictable way to shorten cantilevers and avoid grafting, with survival and marginal bone loss comparable to axial implants [menini2012]. A practical rule keeps the cantilever to about 1.5 times the anteroposterior spread, and shorter still with parafunction. With long cantilevers a rigid metal framework is preferred (cobalt-chromium over titanium), and monolithic-zirconia designs, both the Titanium-Zirconia bridge and Full Zirconia, are penalised, since zirconia is brittle under leverage and the slightest misfit and needs strict cantilever and connector ratios to resist fracture [papaspyridakos2024].</p>",
+ apSpread:"<p>The anteroposterior spread is the distance between the most anterior and the most distal implants: the wider it is, the better the prosthesis resists cantilever leverage. A classic rule keeps the cantilever to about 1.5 times the A-P spread, less with parafunction [bevilacqua2011]. Tilted implants are used precisely to widen the spread and shorten the cantilevers [menini2012].</p><p>With a reduced spread (implants close together, for example four bunched implants) leverage on the terminals rises and rigid, monolithic designs, less tolerant of overload and misfit, are penalised; metal frameworks are preferred and, where indicated, solutions that cushion or distribute the load.</p>",boneQuality:"<p>Bone quality governs primary stability and the share of stress transmitted to the interface. The posterior maxilla is often soft bone (type III-IV), where immediate loading depends on primary stability, rigid splinting and tilted implants that shorten cantilevers [menini2012][tealdo2014].</p><p>On soft bone it is wise to blunt load peaks: resin or composite occlusal surfaces cushion [menini2013] and load-distributing solutions are more prudent, while monolithic zirconia, rigid and misfit-sensitive, is penalised. On dense bone the constraint relaxes and the choice is again driven by esthetics, space and material.</p>",
+ systemicRisk:"<p>A relevant systemic or biological risk (uncontrolled diabetes, immunosuppression, antiresorptive therapy with MRONJ risk, heavy smoking) raises biological complications and shifts priorities toward maintainable, retrievable, easily cleaned designs [hamilton2023].</p><p>Screw-retained prostheses are retrievable and allow inspection and re-intervention; where hygiene is at risk, the removable overdenture eases maintenance. Immediate loading remains possible in selected cases but demands stricter selection and closer follow-up [gallardo2019]. The metal-acrylic hybrid, repairable chairside, simplifies the management of complications, while complex monolithic designs are less suited. In these patients the prosthetic choice favours long-term manageability over maximum complexity.</p>",
+ acceptOVD:"<p>Acceptance of a removable device is the prerequisite for the bar overdenture: if the patient wants a fixed solution, that branch is dropped regardless of its hygienic advantages. It is a clinical decision to share with the patient.</p><p>The overdenture requires explaining maintenance (attachment wear, periodic relines), but offers superior cleansability and excellent lip and tissue support, particularly useful in severe atrophy [hamilton2023][carpentieri2019]. A patient who refuses a removable is directed toward fixed solutions, accepting their hygiene and bulk trade-offs.</p>",
+ willingInvest:"<p>This question captures the Thimble rationale: a higher upfront investment buys individual zirconia crowns luted onto a mesostructure, so a single chipped or worn unit is replaced cheaply without remaking the whole prosthesis. In a young patient with means, this improves whole-life cost and OVD stability [papaspyridakos2024].</p><p>If the patient is not willing to spend more upfront, cheaper solutions (Toronto, Natural) or the Titanium-Zirconia bridge are chosen, the latter offering esthetics and stability with intermediate repairability [gelpi2024]. In 'Automatic' mode the value is inferred from the stated budget.</p>",
+ investPractical:"<p>Here the investment is balanced against life expectancy and biological horizon. A costly, ultra-durable design such as the Thimble yields diminishing returns as age rises, where repairability, hygiene and cost control dominate: that is why, in the case series, a 75-year-old was moved from the Thimble to the Titanium-Zirconia bridge [gelpi2024].</p><p>In a young patient, by contrast, the long horizon justifies investing in a material that holds the OVD for years [papaspyridakos2024]. The judgement stays interpretive and must fit the individual; in 'Automatic' mode it is inferred from age and budget.</p>"
+}
+};
+
+var FACTOR_TEXT={
+it:{parafunction:"Bruxismo → meglio resina/composito, penalizzata la zirconia occlusale",antagonist_zirc:"Antagonista dentato → meglio il composito, penalizzata la zirconia",esthetic_high:"Estetica alta → favorite le opzioni in zirconia",esthetic_low:"Estetica bassa → bastano denti del commercio/composito",smile_high:"Sorriso alto → penalizzato il Toronto",smile_low:"Sorriso basso → il Toronto va bene",softcomp_yes:"Serve falsa gengiva → favoriti Toronto e overdenture",softcomp_no:"Nessuna compensazione → favorito il Natural bridge",hygiene_reduced:"Igiene ridotta → favorita l'overdenture",space_reduced:"Spazio ridotto → penalizzate Ti-Zr e overdenture; meglio Cr-Co",space_ample:"Spazio ampio → favorite Ti-Zr, overdenture, Thimble",budget_low:"Budget ridotto → favorite Toronto/Natural/overdenture",budget_high:"Budget elevato → praticabili Thimble e Ti-Zr",young:"Paziente giovane → favorite le opzioni in zirconia (tengono la DVO)",elderly:"Paziente anziano → meglio riparabilità e igiene, penalizzata la Thimble",long_cantilever:"Cantilever esteso → penalizzata la full-zirconia, meglio Cr-Co",few_implants:"Pochi impianti → lieve penalizzazione dei disegni rigidi",many_implants:"Molti impianti → miglior supporto",arch_maxilla:"Mascella → lieve premio alle opzioni estetiche",systemic_risk:"Rischio sistemico → premio alle soluzioni mantenibili",reject_removable:"Rimovibile non accettato → overdenture esclusa",accept_removable:"Rimovibile accettato → overdenture praticabile",fullzr_caution:"Full-zirconia sconsigliata (fit e passività)",smile_medium:"Sorriso medio → esposizione intermedia della giunzione",space_verylow:"Spazio molto ridotto (<9 mm) → penalizzate Ti-Zr e overdenture, meglio profili bassi",ap_reduced:"Spread A-P ridotto → più leva sui terminali, penalizzati i disegni rigidi/monolitici",bone_soft:"Osso tenero → meglio ammortizzare il carico, penalizzata la zirconia monolitica",material_crco:"Framework in Cromo-cobalto → sezioni sottili per spazio ridotto o cantilever",material_ti:"Framework in Titanio → migliore biocompatibilità",material_zr:"Nessun framework metallico → penalizzato con spazio o cantilever critici"},
+en:{parafunction:"Bruxism → resin/composite better, occlusal zirconia penalised",antagonist_zirc:"Dentate antagonist → composite better, zirconia penalised",esthetic_high:"High esthetics → zirconia options favoured",esthetic_low:"Low esthetics → denture teeth/composite are enough",smile_high:"High smile → Toronto penalised",smile_low:"Low smile → the Toronto is fine",softcomp_yes:"False gingiva needed → Toronto and overdenture favoured",softcomp_no:"No compensation → Natural bridge favoured",hygiene_reduced:"Reduced hygiene → overdenture favoured",space_reduced:"Reduced space → Ti-Zr and overdenture penalised; Cr-Co better",space_ample:"Ample space → Ti-Zr, overdenture, Thimble favoured",budget_low:"Reduced budget → Toronto/Natural/overdenture favoured",budget_high:"High budget → Thimble and Ti-Zr feasible",young:"Young patient → zirconia options favoured (hold the OVD)",elderly:"Elderly patient → repairability and hygiene better, Thimble penalised",long_cantilever:"Long cantilever → full-zirconia penalised, Cr-Co better",few_implants:"Few implants → slight penalty for rigid designs",many_implants:"Many implants → better support",arch_maxilla:"Maxilla → slight bonus to esthetic options",systemic_risk:"Systemic risk → bonus to maintainable solutions",reject_removable:"Removable refused → overdenture excluded",accept_removable:"Removable accepted → overdenture feasible",fullzr_caution:"Full-zirconia discouraged (fit and passivity)",smile_medium:"Medium smile → intermediate junction exposure",space_verylow:"Very reduced space (<9 mm) → Ti-Zr and overdenture penalised, low profiles better",ap_reduced:"Reduced A-P spread → more leverage on terminals, rigid/monolithic designs penalised",bone_soft:"Soft bone → cushioning preferred, monolithic zirconia penalised",material_crco:"Cobalt-chromium framework → thin sections for reduced space or cantilever",material_ti:"Titanium framework → better biocompatibility",material_zr:"No metal framework → penalised with critical space or cantilever"}
+};
+
+var NODE_LABELS={
+ it:{young:"Paziente giovane?",paraf_young:"Parafunzioni?",paraf_notyoung:"Parafunzioni?",zirconia_risk:"Zirconia troppo abrasiva?",invest_repair:"Investimento per riparazioni facili?",invest_age:"Investimento sensato? (età)",tizr_space_L:"Spazio per Titanio-Zirconia?",tizr_space_R:"Spazio per Titanio-Zirconia?",antag_zirc_R:"Antagonista a rischio zirconia?",smile:"Linea del sorriso bassa?",softcomp_low:"Compensare i tessuti molli?",softcomp_high:"Compensare i tessuti molli?",accept_ovd:"Accetta una overdenture?",ovd_space:"Spazio per overdenture?",hygiene:"Igiene orale ridotta?"},
+ en:{young:"Young patient?",paraf_young:"Parafunction?",paraf_notyoung:"Parafunction?",zirconia_risk:"Zirconia too abrasive?",invest_repair:"Invest for easy repairs?",invest_age:"Investment sensible? (age)",tizr_space_L:"Space for Titanium-Zirconia?",tizr_space_R:"Space for Titanium-Zirconia?",antag_zirc_R:"Antagonist at zirconia risk?",smile:"Low smile line?",softcomp_low:"Compensate soft tissues?",softcomp_high:"Compensate soft tissues?",accept_ovd:"Accepts an overdenture?",ovd_space:"Space for overdenture?",hygiene:"Reduced oral hygiene?"}
+};
+
+/*=================== UI ===================*/
+var LANG="it", VIEW="tool", STEP=-1; // -1 = intro
+var DEF={ageBand:"adult",budget:"medium",reducedHygiene:"no",parafunction:"no",antagonist:"fixed_impl",esthetic:"medium",smile:"low",needSoftComp:"no",arch:"maxilla",space:"adequate",implants:"5",longCantilever:"no",systemicRisk:"no",acceptOVD:"yes",willingInvest:"auto",investPractical:"auto"};
+var A={};
+var REPORT={title:"Dott.",name:"",patient:""};
+var REFNUM={}; REFERENCES.forEach((r,k)=>REFNUM[r.id]=k+1);
+
+function $(s,r){return (r||document).querySelector(s);}
+function ce(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
+function tt(){return T[LANG];}
+function QS(){return QUESTIONS[LANG];}
+function optName(o){return OPT_TEXT[LANG][o].n;}
+function nodeOutName(id){if(id==="tizr_L"||id==="tizr_R")return optName("tizr");if(id==="toronto_or_long")return OUTCOME_LABEL[LANG].toronto_or_long;if(OPT_TEXT[LANG][id])return OPT_TEXT[LANG][id].n;return id;}
+function refBadges(ids){if(!ids||!ids.length)return "";return ids.filter(r=>REFNUM[r]).map(r=>'<span class="reflink" data-ref="'+r+'">['+REFNUM[r]+']</span>').join("");}
+
+function buildInputs(a){
+ var investPractical=a.investPractical==="yes"?true:a.investPractical==="no"?false:(a.ageBand==="young"?true:a.ageBand==="elderly"?false:(a.budget!=="low"));
+ var willingInvest=a.willingInvest==="yes"?true:a.willingInvest==="no"?false:(a.budget!=="low");
+ return{young:a.ageBand==="young",ageBand:a.ageBand,parafunction:(a.parafunction==="mild"||a.parafunction==="severe"),parafSeverity:(a.parafunction==="severe"?1:(a.parafunction==="mild"?0.5:0)),
+  zirconiaRiskAntag:(a.antagonist==="natural_healthy"||a.antagonist==="natural_perio"),
+  willingInvest:willingInvest,investPractical:investPractical,tiZrSpace:(a.space==="ample"||a.space==="adequate"),ovdSpace:(a.space!=="verylow"),
+  lowSmile:(a.smile==="low"),smile:a.smile,needSoftComp:(a.needSoftComp==="yes"),acceptOVD:(a.acceptOVD==="yes"),reducedHygiene:(a.reducedHygiene==="yes"),
+  budget:a.budget,esthetic:a.esthetic,space:a.space,implants:a.implants,arch:a.arch,longCantilever:(a.longCantilever==="yes"),systemicRisk:(a.systemicRisk==="yes"),apSpread:a.apSpread,boneQuality:a.boneQuality};
+}
+function activeMap(inp){
+ var nodes={},edges={};
+ function outNode(o,f){if(o==="tizr")return(f==="tizr_space_L")?"tizr_L":"tizr_R";return o;}
+ function seg(s){var id=s,g=0;while(g++<60){nodes[id]=1;var h=RehabEngine.HANDLERS[id](inp);if(h.out){var on=outNode(h.out,id);nodes[on]=1;edges[id+"|"+on]=h.a;return{outcome:h.out,node:on};}edges[id+"|"+h.next]=h.a;id=h.next;}return{outcome:"toronto_or_long",node:"toronto_or_long"};}
+ var s1=seg("young"),fn=s1.node,fo=s1.outcome;
+ if(fo==="thimble"&&inp.budget!=="high"){edges["thimble|tizr_L"]="cost";nodes["tizr_L"]=1;fn="tizr_L";fo="tizr";}
+ if(fo==="tizr"&&inp.budget==="low"){edges[fn+"|smile"]="cost";var s2=seg("smile");fn=s2.node;fo=s2.outcome;}
+ return{nodes:nodes,edges:edges,finalNode:fn};
+}
+
+function render(){
+ var t=tt();document.documentElement.lang=LANG;
+ $("#brandLogo").innerHTML=LOGO;$("#gateLogo").innerHTML=LOGO;
+ $("#brandSub").textContent=t.brandSub;var _br=document.querySelector(".brand");if(_br){_br.style.cursor="pointer";_br.onclick=function(){VIEW="tool";applyView();window.scrollTo({top:0,behavior:"smooth"});};}
+ renderGate();renderNav();renderLang();renderFooter();
+ renderTool();renderModel();renderRefs();renderCredits();renderLegal();renderInfo();applyView();
+}
+function renderGate(){
+ var t=tt();
+ $("#gateTitle").textContent=t.gateTitle;$("#gateKicker").textContent=t.gateKicker;
+ $("#gateBody").innerHTML=LEGAL[LANG];
+ $("#gateOk").textContent=t.gateOk;$("#gateLegalBtn").textContent=t.gateLegal;
+ $("#gateOk").onclick=function(){try{localStorage.setItem("archwise_ok","1");}catch(e){}$("#gate").classList.add("hidden");};
+ $("#gateLegalBtn").onclick=function(){$("#gate").classList.add("hidden");VIEW="legal";applyView();};
+ var ok=false;try{ok=localStorage.getItem("archwise_ok")==="1";}catch(e){}
+ $("#gate").classList.toggle("hidden",ok);
+}
+function renderNav(){
+ var t=tt(),nav=$("#nav");nav.innerHTML="";
+ [["tool",t.nav.tool],["info",t.nav.info],["refs",t.nav.refs],["credits",t.nav.credits]].forEach(v=>{
+  var b=ce("button",VIEW===v[0]?"on":"",v[1]);b.onclick=function(){VIEW=v[0];applyView();nav.classList.remove("open");};nav.appendChild(b);});
+}
+function renderLang(){var l=$("#lang");l.innerHTML="";["it","en"].forEach(lc=>{var b=ce("button",LANG===lc?"on":"",lc.toUpperCase());b.onclick=function(){LANG=lc;render();};l.appendChild(b);});}
+function renderFooter(){var t=tt();$("#footer").innerHTML='<span>ArchWise · '+esc(t.brandSub)+'</span><span>© '+new Date().getFullYear()+' · <a href="#" id="fLegal">'+esc(t.nav.legal)+'</a></span>';var fl=$("#fLegal");if(fl)fl.onclick=function(e){e.preventDefault();VIEW="legal";applyView();};}
+function applyView(){["tool","model","refs","credits","legal","info"].forEach(v=>$("#view-"+v).classList.toggle("on",VIEW===v));
+ document.querySelectorAll("#nav button").forEach((b,i)=>b.classList.toggle("on",["tool","info","refs","credits"][i]===VIEW));
+ window.scrollTo({top:0,behavior:"smooth"});}
+
+/* ---- SCROLL QUESTIONNAIRE (one question at a time, revealed on scroll) ---- */
+function fullArchSVG(){
+ var it=LANG==="it";
+ var root=it?["Quale framework","scegliere?"]:["Which framework","to choose?"];
+ var sols=[["Toronto","#2c6f96"],["Natural","#3f8f5a"],["Thimble","#8a5cc0"],["Ti-Zr","#c68a2e"],[it?"OVD barra":"Bar OVD","#bf4a30"],["Full Zr","#6b7280"]];
+ var cxs=[60,143,226,309,392,475];
+ function edge(x1,y1,x2,y2){var my=(y1+y2)/2;return '<path d="M'+x1+' '+y1+' C '+x1+' '+my+' '+x2+' '+my+' '+x2+' '+y2+'" fill="none" stroke="#cbd8d8" stroke-width="1.8" stroke-linecap="round"/>';}
+ var e="";cxs.forEach(function(cx){e+=edge(267,54,cx,138);});
+ var pills="";cxs.forEach(function(cx,i){var col=sols[i][1];pills+='<g><rect x="'+(cx-38)+'" y="137" width="76" height="30" rx="15" fill="#fff" stroke="'+col+'" stroke-width="1.8"/><text x="'+cx+'" y="156" text-anchor="middle" font-size="11.5" font-weight="800" fill="'+col+'">'+sols[i][0]+'</text></g>';});
+ var rn='<g filter="url(#hs)"><rect x="177" y="18" width="180" height="40" rx="12" fill="#007e86" stroke="#00a6ae" stroke-width="2"/><text x="267" y="34" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">'+root[0]+'</text><text x="267" y="50" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">'+root[1]+'</text></g>';
+ return '<svg viewBox="0 0 534 182" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI,system-ui,sans-serif"><defs><radialGradient id="hb" cx="50%" cy="30%" r="75%"><stop offset="0" stop-color="#e6f2f2"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient><filter id="hs" x="-20%" y="-30%" width="140%" height="170%"><feDropShadow dx="0" dy="2" stdDeviation="2.6" flood-color="#0e403f" flood-opacity="0.16"/></filter></defs><rect x="0" y="0" width="534" height="182" fill="url(#hb)"/>'+e+pills+rn+'</svg>';
+}
+var progObserver=null;
+function renderTool(){
+ var t=tt(),st=$("#stage");st.innerHTML="";
+ var prog=ce("div","scroll-prog");prog.innerHTML='<div class="track"><i id="progBar"></i></div><div class="lbl" id="progLbl"></div>';st.appendChild(prog);
+ var intro=ce("section","qblock intro-block");
+ intro.innerHTML='<div class="archero">'+fullArchSVG()+'</div><span class="eyebrow" style="margin:2px auto 0">'+esc(t.nav.tool)+'</span><h1 class="qh" style="margin-top:10px">'+esc(t.introTitle)+'</h1><p style="color:var(--muted);max-width:52ch;margin:8px auto 0">'+esc(t.introLead)+'</p><div class="scrolldown">'+esc(t.scrollHint)+' ↓</div>';
+ st.appendChild(intro);
+ QS().forEach((q,idx)=>{
+  var blk=ce("section","qblock qform");blk.id="q"+idx;
+  var opts=ce("div","qopts");
+  q.opts.forEach(o=>{
+   var sel=A[q.id]===o[0];
+   var b=ce("button","qopt"+(sel?" sel":""),'<span class="rd"></span><span class="lab">'+esc(o[1])+'</span>');
+   b.onclick=function(){A[q.id]=o[0];[].forEach.call(opts.children,c=>c.classList.remove("sel"));b.classList.add("sel");buildResults();var nx=$("#q"+(idx+1))||$("#toolResults");if(nx)setTimeout(function(){nx.scrollIntoView({behavior:"smooth",block:"center"});},220);};
+   opts.appendChild(b);
+  });
+  blk.appendChild(ce("div","sec-tag",'<span class="dot"></span>'+esc(q.sec)));
+  blk.appendChild(ce("h2","qh rv",esc(q.q)));
+  blk.appendChild(opts);
+  var whyHtml=(WHY[LANG]&&WHY[LANG][q.id])||"";if(whyHtml){var d=ce("div","why open");d.innerHTML='<div class="why-h">ⓘ '+esc(t.why)+'</div><div class="whx">'+renderWhy(whyHtml)+'</div>';blk.appendChild(d);}
+  st.appendChild(blk);
+ });
+ var res=ce("section","qblock res-block");res.id="toolResults";st.appendChild(res);
+ buildResults();setupProgress();
+}
+function setupProgress(){
+ var tot=QS().length;
+ if(!("IntersectionObserver" in window)){updateProg(0,tot);return;}
+ if(progObserver)progObserver.disconnect();
+ progObserver=new IntersectionObserver(function(en){
+  en.forEach(function(e){ if(!e.isIntersecting)return; var id=e.target.id, cur=0;
+   if(id==="toolResults")cur=tot; else if(/^q\d+$/.test(id))cur=parseInt(id.slice(1),10)+1;
+   updateProg(cur,tot); });
+ },{rootMargin:"-45% 0px -45% 0px",threshold:0});
+ document.querySelectorAll("#stage .qblock").forEach(function(b){progObserver.observe(b);});
+ updateProg(0,tot);
+}
+function updateProg(cur,tot){var bar=$("#progBar"),lbl=$("#progLbl");if(!bar||!lbl)return;
+ bar.style.width=(cur===0?4:Math.round(cur/tot*100))+"%";
+ lbl.textContent=cur>=tot?(LANG==="it"?"Risultati":"Results"):tt().qOf.replace("{n}",Math.max(1,cur)).replace("{t}",tot);}
+
+/* ---- RESULTS ---- */
+function buildResults(){
+ var t=tt(),st=$("#toolResults");if(!st)return;st.innerHTML="";
+ st.appendChild(ce("div","res-div",esc(LANG==="it"?"Risultati":"Results")));
+ var _q=QUESTIONS[LANG],_ans=_q.filter(function(q){return A[q.id]!=null;}).length;
+ if(_ans<_q.length){var ph=ce("div","results");ph.appendChild(ce("div","card pad",'<div style="text-align:center;color:var(--muted);padding:24px 14px"><div style="font-family:var(--display);font-size:18px;color:var(--ink);margin-bottom:6px">'+esc(LANG==="it"?"Rispondi a tutte le domande":"Answer all the questions")+'</div><div style="font-size:13.5px">'+esc(LANG==="it"?"Completate ":"Completed ")+_ans+"/"+_q.length+esc(LANG==="it"?" — la soluzione consigliata comparira qui.":" — the recommended solution will appear here.")+'</div></div>'));if(_ans>0){var _rb=ce("button","btn ghost sm",esc(t.restart));_rb.onclick=function(){A={};renderTool();window.scrollTo({top:0,behavior:"smooth"});};var _rw=ce("div","rback");_rw.style.justifyContent="center";_rw.style.marginTop="12px";_rw.appendChild(_rb);ph.appendChild(_rw);}st.appendChild(ph);return;}
+ var inp=buildInputs(A),adv=RehabEngine.advise(inp),flow=adv.flow,primaryOpt=OUTCOME2OPT[flow.outcome],pm=OPT_TEXT[LANG][primaryOpt];
+ var outLabel=flow.outcome==="toronto_or_long"?OUTCOME_LABEL[LANG].toronto_or_long:pm.n;
+ var metalTxt=(RehabEngine.materialOf(primaryOpt,inp)==="crco")?t.metalCr:t.metalTi;
+ var box=ce("div","results");
+
+ var top=ce("div","rback");
+ var rest=ce("button","btn ghost sm",esc(t.restart));rest.onclick=function(){A={};renderTool();window.scrollTo({top:0,behavior:"smooth"});};
+ top.appendChild(rest);box.appendChild(top);
+
+ var hero=ce("div","rhero");
+ hero.innerHTML='<div class="k">'+esc(t.primaryK)+'</div><h2>'+esc(outLabel)+'</h2><div class="compo">'+
+   '<span class="tagw"><b>'+esc(t.metaMeso)+':</b> '+esc(pm.meso)+'</span>'+
+   '<span class="tagw"><b>'+esc(t.metaSupra)+':</b> '+esc(pm.supra)+'</span>'+
+   (primaryOpt!=="fullzr"?'<span class="tagw"><b>'+esc(t.metaMetal)+':</b> '+esc(metalTxt)+'</span>':'')+'</div>';
+ box.appendChild(hero);
+
+ var topScored=adv.ranking[0].option;
+ if(topScored!==primaryOpt&&topScored!=="fullzr")box.appendChild(ce("div","note",t.divergeNote.replace("{flow}",esc(optName(primaryOpt))).replace("{score}",esc(optName(topScored)))));
+ if(flow.redirects.length){var chain=flow.redirects.map(r=>{var to=r.to==="smile"?(LANG==="it"?"percorso Toronto/Natural":"Toronto/Natural path"):optName(r.to);return optName(r.from)+" → "+to;}).join("; ");box.appendChild(ce("div","note",t.costNote.replace("{chain}",esc(chain))));}
+
+ // ranking
+ var rc=ce("div","card pad");
+ rc.appendChild(ce("div","ch",'<span class="n">#</span><h3>'+esc(t.rankTitle)+'</h3><span class="sub">'+esc(t.rankSub)+'</span>'));
+ var list=ce("div","rank");
+ adv.ranking.forEach((r,i)=>{
+  var o=r.option,om=OPT_TEXT[LANG][o],col=OPTION_META[o].color;
+  var card=ce("div","rk"+(i===0?" top":""));
+  card.appendChild(ce("div","rk-top",'<div class="pos">'+(i+1)+'</div><div class="nm" style="color:'+col+'">'+esc(om.n)+'<small>'+esc(om.meso)+'</small></div><div class="sc"><b style="color:'+col+'">'+r.score+'</b><span>/100</span></div>'));card.appendChild(ce("div",null,'<div style="font-size:12px;color:var(--muted);margin:3px 0 6px;line-height:1.45">'+esc(om.d)+'</div>'));if(r.material&&r.material!=="none"){var _mn=r.material==="crco"?"Cr-Co":(LANG==="it"?"Titanio":"Titanium");var _alt=(r.altMaterial&&r.altDelta)?(" ("+(r.altMaterial==="crco"?"Cr-Co":(LANG==="it"?"Titanio":"Titanium"))+" "+(r.altDelta>0?"+":"")+r.altDelta+")"):"";card.appendChild(ce("div",null,'<div style="font-size:11.5px;color:var(--faint);margin:0 0 9px">'+esc("Framework: "+_mn+_alt)+'</div>'));}
+  card.appendChild(ce("div","bar",'<i data-w="'+r.score+'" style="background:linear-gradient(90deg,'+col+'aa,'+col+')"></i>'));
+  var chips=ce("div","chiprow");om.pros.slice(0,2).forEach(x=>chips.appendChild(ce("span","chip good","✓ "+x)));om.cons.slice(0,1).forEach(x=>chips.appendChild(ce("span","chip warn","! "+x)));card.appendChild(chips);
+  var why=ce("div","whyx");
+  var cs=r.contribs.slice().sort((a,b)=>Math.abs(b.delta)-Math.abs(a.delta));
+  if(!cs.length)why.appendChild(ce("div","contrib",'<span class="tx">'+(LANG==="it"?"Punteggio base, nessun modificatore.":"Base score, no modifier.")+'</span>'));
+  cs.forEach(c=>why.appendChild(ce("div","contrib",'<span class="d '+(c.delta>0?"pos":"neg")+'">'+(c.delta>0?"+":"")+c.delta+'</span><span class="tx">'+esc(FACTOR_TEXT[LANG][c.factor]||c.factor)+' '+refBadges(c.refs)+'</span>')));
+  card.appendChild(why);
+  card.onclick=function(e){if(e.target.closest(".reflink"))return;card.classList.toggle("open");};
+  list.appendChild(card);
+ });
+ rc.appendChild(list);box.appendChild(rc);
+
+ // map
+ var mc=ce("div","card pad mapcard");
+ mc.appendChild(ce("div","ch",'<span class="n">◈</span><h3>'+esc(t.mapTitle)+'</h3>'));
+ mc.appendChild(ce("div",null,'<div style="font-size:12px;color:var(--muted);margin:0 0 9px">'+esc(t.mapHint)+'</div>'));
+ var mw=ce("div","mapwrap");mw.innerHTML=buildMap(inp);mc.appendChild(mw);
+ mc.appendChild(ce("div","legend",'<span><i></i>'+esc(t.legMain)+'</span><span><i class="dash"></i>'+esc(t.legCost)+'</span><span><i class="dim"></i>'+esc(t.legDim)+'</span>'));
+ box.appendChild(mc);
+
+
+
+ // answers summary
+ var ac=ce("div","card pad");
+ ac.appendChild(ce("div","ch",'<span class="n">✓</span><h3>'+esc(t.answersTitle)+'</h3>'));
+ var ans=ce("div","answers");ans.style.marginTop="6px";
+ QS().forEach((q,idx)=>{var val=(q.opts.find(o=>o[0]===A[q.id])||[])[1]||A[q.id];var c=ce("span","ansch",esc(q.q.replace(/\?$/,""))+': <b>'+esc(val)+'</b>');c.onclick=function(){var el=$("#q"+idx);if(el)el.scrollIntoView({behavior:"smooth",block:"center"});};ans.appendChild(c);});
+ ac.appendChild(ans);box.appendChild(ac);
+
+ // PDF
+ var pc=ce("div","card pad");
+ pc.appendChild(ce("div","ch",'<span class="n">⤓</span><h3>'+esc(t.pdfSec)+'</h3>'));
+ var grid=ce("div","namegrid");var _tl=ce("div",null,'<div style="font-size:12px;color:var(--muted)">'+(LANG==="it"?"Titolo":"Title")+'</div>');_tl.style.alignSelf="center";var _ts=ce("select","inp");["Dott.","Dott.ssa","Prof.","Prof.ssa","Sig.","Sig.ra","—"].forEach(function(x){var o=ce("option",null,x);o.value=x;if(x===REPORT.title)o.selected=true;_ts.appendChild(o);});_ts.onchange=function(){REPORT.title=_ts.value;};grid.appendChild(_tl);grid.appendChild(_ts);
+ var lab1=ce("div",null,'<div style="font-size:12px;color:var(--muted);align-self:center">'+esc(t.pdfName)+'</div>');lab1.style.alignSelf="center";
+ var nin=ce("input","inp");nin.placeholder=t.pdfNamePh;nin.value=REPORT.name;nin.oninput=function(){REPORT.name=nin.value;};
+ grid.appendChild(lab1);grid.appendChild(nin);
+ var lab2=ce("div",null,'<div style="font-size:12px;color:var(--muted)">'+esc(t.pdfPt)+'</div>');lab2.style.alignSelf="center";
+ var pin=ce("input","inp");pin.placeholder=t.pdfPtPh;pin.value=REPORT.patient;pin.oninput=function(){REPORT.patient=pin.value;};
+ grid.appendChild(lab2);grid.appendChild(pin);
+ pc.appendChild(grid);
+ var dl=ce("button","btn primary block",'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>'+esc(t.download));
+ dl.style.marginTop="12px";dl.onclick=function(){printReport(inp,adv);};
+ pc.appendChild(dl);box.appendChild(pc);
+
+ st.appendChild(box);
+ setTimeout(()=>document.querySelectorAll("#stage .bar i").forEach(i=>i.style.width=i.getAttribute("data-w")+"%"),40);
+}
+
+
+/* ---- FLOW MAP ---- */
+var MAP={dec_w:0.70,out_w:0.82,long_w:1.30,fs:0.081,lh:0.100,padv:0.11,minh:0.32};
+function wrapN(s,max,maxln){var w=String(s).split(" "),l=[],c="";w.forEach(function(x){if((c+" "+x).trim().length>max){if(c)l.push(c);c=x;}else c=(c+" "+x).trim();});if(c)l.push(c);return l.slice(0,maxln||6);}
+function mapGeom(id){var isOut=NODE_POS[id].o;var label=isOut?nodeOutName(id):(NODE_LABELS[LANG][id]||id);var w=isOut?(id==="toronto_or_long"?MAP.long_w:MAP.out_w):MAP.dec_w;var maxc=Math.max(9,Math.floor((w-0.14)/(MAP.fs*0.5)));var lines=wrapN(label,maxc,6);var h=Math.max(MAP.minh,lines.length*MAP.lh+MAP.padv);return{isOut:isOut,label:label,w:w,h:h,lines:lines};}
+function svgLines(lines,x,y,color,weight,fs,lh){var start=y-(lines.length-1)*lh/2;return lines.map(function(ln,i){return '<text x="'+x.toFixed(1)+'" y="'+(start+i*lh+fs*0.34).toFixed(1)+'" text-anchor="middle" font-size="'+fs.toFixed(1)+'" font-weight="'+weight+'" fill="'+color+'">'+esc(ln)+'</text>';}).join("");}
+function buildMap(inp){
+ var S=132,YT=5.2,am=activeMap(inp),ids=Object.keys(NODE_POS);
+ var FS=MAP.fs*S,LH=MAP.lh*S,G={};ids.forEach(function(id){G[id]=mapGeom(id);});
+ function cx(id){return NODE_POS[id].x*S;}
+ function cy(id){return(YT-NODE_POS[id].y)*S;}
+ var eSvg="",lSvg="",nSvg="";
+ var ordered=EDGES.slice().sort(function(a,b){return (am.edges[a[0]+"|"+a[1]]?1:0)-(am.edges[b[0]+"|"+b[1]]?1:0);});
+ ordered.forEach(function(e){var sx=cx(e[0]),sy=cy(e[0]),tx=cx(e[1]),ty=cy(e[1]),key=e[0]+"|"+e[1],on=am.edges[key],my=(sy+ty)/2;
+  var d="M"+sx.toFixed(1)+" "+sy.toFixed(1)+" C "+sx.toFixed(1)+" "+my.toFixed(1)+" "+tx.toFixed(1)+" "+my.toFixed(1)+" "+tx.toFixed(1)+" "+ty.toFixed(1),cost=(e[3]==="redir"),col=on?(cost?"#c68a2e":"#00a6ae"):"#cbd8d8",wdt=on?2.6:1.0;
+  eSvg+='<path d="'+d+'" fill="none" stroke="'+col+'" stroke-width="'+wdt+'"'+(cost?' stroke-dasharray="6 4"':'')+' opacity="'+(on?1:.4)+'"/>';
+  var ddx=tx-sx,ddy=ty-sy,elen=Math.hypot(ddx,ddy)||1,ux=ddx/elen,uy=ddy/elen;
+  function _ex(g){var hw=g.w*S/2,hh=g.h*S/2,a=Math.abs(ux)>0.001?hw/Math.abs(ux):1e9,b=Math.abs(uy)>0.001?hh/Math.abs(uy):1e9;return Math.min(a,b);}
+  var _mid=(_ex(G[e[0]])+(elen-_ex(G[e[1]])))/2,lx=sx+ux*_mid,ly=sy+uy*_mid,lab=cost?"€":(LANG==="it"?(e[2]==="yes"?"Sì":"No"):(e[2]==="yes"?"Yes":"No"));
+  if(on||cost){var bw=lab.length>2?20:16;lSvg+='<g opacity="'+(on?1:.55)+'"><rect x="'+(lx-bw/2).toFixed(1)+'" y="'+(ly-7.5).toFixed(1)+'" width="'+bw+'" height="15" rx="7.5" fill="#fff" stroke="'+col+'"/><text x="'+lx.toFixed(1)+'" y="'+(ly+3.2).toFixed(1)+'" text-anchor="middle" font-size="9.5" font-weight="700" fill="'+(cost?"#c68a2e":(on?"#067b81":"#95a6a6"))+'">'+lab+'</text></g>';}
+ });
+ ids.slice().sort(function(a,b){var aa=(am.nodes[a]||am.finalNode===a)?1:0,bb=(am.nodes[b]||am.finalNode===b)?1:0;if(aa!==bb)return aa-bb;return NODE_POS[a].x-NODE_POS[b].x;}).forEach(function(id){
+  var g=G[id],x=cx(id),y=cy(id),act=am.nodes[id],fin=(am.finalNode===id),w=g.w*S,h=g.h*S;
+  if(g.isOut){var opt=(id==="tizr_L"||id==="tizr_R")?"tizr":(id==="toronto_or_long"?"toronto":id),col=OPTION_META[opt]?OPTION_META[opt].color:"#007e86",fill=(fin||act)?col:"#fff",tx=(fin||act)?"#fff":col;
+   nSvg+='<g'+(act?' filter="url(#glow)"':'')+'><rect x="'+(x-w/2).toFixed(1)+'" y="'+(y-h/2).toFixed(1)+'" width="'+w.toFixed(1)+'" height="'+h.toFixed(1)+'" rx="'+(h/2).toFixed(1)+'" fill="'+fill+'" stroke="'+col+'" stroke-width="'+(act?2.2:1.4)+'" opacity="'+(act?1:.6)+'"/>'+svgLines(g.lines,x,y,tx,700,FS,LH)+'</g>';
+  }else{var f=fin?"#007e86":(act?"#e2f2f2":"#fff"),stc=act?"#00a6ae":"#d5e0e0",tx2=fin?"#fff":(act?"#14282d":"#5a6b6e");
+   nSvg+='<g'+(act?' filter="url(#glow)"':'')+'><rect x="'+(x-w/2).toFixed(1)+'" y="'+(y-h/2).toFixed(1)+'" width="'+w.toFixed(1)+'" height="'+h.toFixed(1)+'" rx="10" fill="'+f+'" stroke="'+stc+'" stroke-width="'+(act?2.2:1.2)+'" opacity="'+(act?1:.7)+'"/>'+svgLines(g.lines,x,y,tx2,600,FS,LH)+'</g>';}
+ });
+ var minX=1e9,maxX=-1e9,minY=1e9,maxY=-1e9;
+ ids.forEach(function(id){var g=G[id],x=cx(id),y=cy(id);if(x-g.w*S/2<minX)minX=x-g.w*S/2;if(x+g.w*S/2>maxX)maxX=x+g.w*S/2;if(y-g.h*S/2<minY)minY=y-g.h*S/2;if(y+g.h*S/2>maxY)maxY=y+g.h*S/2;});
+ var pad=16,vbX=(minX-pad).toFixed(1),vbY=(minY-pad).toFixed(1),vbW=(maxX-minX+2*pad).toFixed(1),vbH=(maxY-minY+2*pad).toFixed(1);
+ var defs='<defs><filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#00a6ae" flood-opacity="0.5"/></filter></defs>';
+ return '<svg viewBox="'+vbX+' '+vbY+' '+vbW+' '+vbH+'" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI,system-ui,sans-serif">'+defs+eSvg+lSvg+nSvg+'</svg>';
+}
+
+/* ---- catalogue / refs / credits / legal / info ---- */
+function viewHead(t,title,lead){return '<section class="pad"><span class="eyebrow">'+esc(title)+'</span><h1 style="font-size:26px;margin:12px 0 6px">'+esc(title)+'</h1>'+(lead?'<p style="color:var(--muted);max-width:60ch">'+esc(lead)+'</p>':'')+'<div id="vc"></div></section>';}
+function renderModel(){
+ var t=tt(),v=$("#view-model");v.innerHTML='<section class="pad"><span class="eyebrow">'+esc(t.nav.model)+'</span><h1 style="font-size:26px;margin:12px 0 6px">'+esc(t.modelTitle)+'</h1><p style="color:var(--muted);max-width:60ch">'+esc(t.modelLead)+'</p><div class="grid2" id="mg" style="margin-top:16px"></div></section>';
+ var g=$("#mg");["toronto","natural","thimble","tizr","barovd","fullzr"].forEach(o=>{var om=OPT_TEXT[LANG][o],col=OPTION_META[o].color;var c=ce("div","optcard");
+  c.innerHTML='<h4><span class="swatch" style="background:'+col+'"></span>'+esc(om.n)+(o==="fullzr"?' <span class="chip warn">'+(LANG==="it"?"sconsigliata":"discouraged")+'</span>':'')+'</h4><div class="layers"><b>'+esc(t.metaMeso)+':</b> '+esc(om.meso)+'<br><b>'+esc(t.metaSupra)+':</b> '+esc(om.supra)+'</div><div style="font-size:12.5px;color:var(--muted)">'+esc(om.d)+'</div><div class="chiprow">'+om.pros.map(x=>'<span class="chip good">✓ '+esc(x)+'</span>').join("")+om.cons.map(x=>'<span class="chip warn">! '+esc(x)+'</span>').join("")+'</div>';
+  g.appendChild(c);});
+}
+var REFFILTER="all";
+function renderRefs(){
+ var t=tt(),v=$("#view-refs");v.innerHTML='<section class="pad"><span class="eyebrow">'+esc(t.nav.refs)+'</span><h1 style="font-size:26px;margin:12px 0 6px">'+esc(t.refsTitle)+'</h1><p style="color:var(--muted);max-width:64ch">'+esc(t.refsLead)+'</p><div class="refhead" id="rf"></div><div class="reflist" id="rl"></div></section>';
+ var filters=[["all",t.refAll],["parafunction",t.refParafunction],["material",t.refMaterial],["esthetic",t.refEsthetic],["space",t.refSpace],["implants",t.refImplants]];
+ var fh=$("#rf");filters.forEach(f=>{var b=ce("button","reffilter"+(REFFILTER===f[0]?" on":""),f[1]);b.onclick=function(){REFFILTER=f[0];renderRefs();};fh.appendChild(b);});
+ var list=$("#rl");
+ REFERENCES.forEach(r=>{var show=REFFILTER==="all"||(REFFILTER==="group"?r.grp:(r.topics&&r.topics.indexOf(REFFILTER)>=0));if(!show)return;
+  var doi=r.doi?'<a class="doi" href="https://doi.org/'+r.doi+'" target="_blank" rel="noopener">doi:'+r.doi+'</a>':(r.pmid?'<a class="doi" href="https://pubmed.ncbi.nlm.nih.gov/'+r.pmid+'/" target="_blank" rel="noopener">PMID '+r.pmid+'</a>':'');
+  var badges="";
+  var it=ce("div","ref");it.id="ref-"+r.id;it.innerHTML='<div class="num">'+REFNUM[r.id]+'</div><div class="meta"><div class="t">'+esc(r.authors)+' ('+r.year+'). '+esc(r.title)+'.</div><div class="j"><em>'+esc(r.journal)+'</em> '+esc(r.cit)+' &nbsp;'+doi+'</div><div class="tags">'+badges+'</div></div>';list.appendChild(it);});
+}
+function docAvatarSVG(){return '<svg viewBox="0 0 76 80" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="cc"><circle cx="38" cy="38" r="38"/></clipPath></defs><g clip-path="url(#cc)"><path d="M8 82 C8 60 21 51 38 51 C55 51 68 60 68 82 Z" fill="#ffffff"/><path d="M31 49 L31 60 L38 66 L45 60 L45 49 Z" fill="#e2f2f2"/><circle cx="38" cy="30" r="14.5" fill="#ffffff"/><path d="M28.5 46 C28.5 59 47 59 47 45" fill="none" stroke="#007e86" stroke-opacity=".55" stroke-width="2.3"/><circle cx="47" cy="63" r="3.6" fill="#fff" stroke="#007e86" stroke-opacity=".6" stroke-width="2.1"/></g></svg>';}
+function renderCredits(){
+ var t=tt(),v=$("#view-credits");v.innerHTML='<section class="pad"><span class="eyebrow">'+esc(t.nav.credits)+'</span><h1 style="font-size:26px;margin:12px 0 6px">'+esc(t.creditsTitle)+'</h1><p style="color:var(--muted)">'+esc(t.creditsLead)+'</p><div class="credits" id="cg" style="margin-top:16px"></div><div class="note" id="cn" style="margin-top:16px"></div></section>';
+ var g=$("#cg");CREDITS.forEach(c=>{var d=ce("div","person");d.innerHTML='<div class="avatar" style="background:'+c.color+'">'+docAvatarSVG()+'</div><h3>'+esc(c.name)+'</h3><div class="role">'+esc(c.role[LANG])+'</div><div class="desc">'+esc(c.desc[LANG])+'</div>';g.appendChild(d);});
+ $("#cn").innerHTML=(LANG==="it"?"Fonte: ":"Source: ")+esc(REFERENCES[0].authors)+" ("+REFERENCES[0].year+"). "+esc(REFERENCES[0].title)+". <em>"+esc(REFERENCES[0].journal)+"</em> "+esc(REFERENCES[0].cit)+".";
+}
+function renderLegal(){var t=tt(),v=$("#view-legal");v.innerHTML='<section class="pad"><span class="eyebrow">'+esc(t.nav.legal)+'</span><h1 style="font-size:26px;margin:12px 0 10px">'+esc(t.legalTitle)+'</h1><div class="card pad prose">'+LEGAL[LANG]+'</div></section>';}
+var RADAR={
+ axes:{it:["Estetica","Durata","Riparabilità","Igiene","Costo","Antagonista"],
+       en:["Esthetics","Durability","Repairability","Hygiene","Cost","Antagonist"]},
+ data:{toronto:[2,3,4,3,5,4],natural:[4,2,4,3,4,5],thimble:[5,5,5,3,1,2],tizr:[5,5,2,3,2,2],barovd:[3,3,4,5,4,4],fullzr:[5,4,1,3,2,2]}
+};
+function radarSVG(o){
+ var it=LANG==="it",axes=RADAR.axes[it?"it":"en"],vals=RADAR.data[o],col=OPTION_META[o].color,cx=180,cy=135,R=82,N=6,max=5;
+ function pt(i,r){var ang=(-90+i*60)*Math.PI/180;return [cx+r*Math.cos(ang),cy+r*Math.sin(ang)];}
+ var grid="";for(var g=1;g<=max;g++){var pts="";for(var i=0;i<N;i++){var p=pt(i,R*g/max);pts+=(i?" ":"")+p[0].toFixed(1)+","+p[1].toFixed(1);}grid+='<polygon points="'+pts+'" fill="'+(g===max?"#fafdfd":"none")+'" stroke="#e0eaea" stroke-width="1"/>';}
+ var axL="";for(var i=0;i<N;i++){var p=pt(i,R);axL+='<line x1="'+cx+'" y1="'+cy+'" x2="'+p[0].toFixed(1)+'" y2="'+p[1].toFixed(1)+'" stroke="#e0eaea" stroke-width="1"/>';}
+ var poly="",dots="";for(var i=0;i<N;i++){var p=pt(i,R*vals[i]/max);poly+=(i?" ":"")+p[0].toFixed(1)+","+p[1].toFixed(1);dots+='<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="3" fill="'+col+'"/>';}
+ var labs="";for(var i=0;i<N;i++){var p=pt(i,R+13);var ax=Math.abs(p[0]-cx)<6?"middle":(p[0]>cx?"start":"end");labs+='<text x="'+p[0].toFixed(1)+'" y="'+(p[1]+3).toFixed(1)+'" text-anchor="'+ax+'" font-size="10.5" font-weight="600" fill="#5a6b6e">'+esc(axes[i])+'</text>';}
+ return '<svg viewBox="0 0 360 250" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI,system-ui,sans-serif">'+grid+axL+'<polygon points="'+poly+'" fill="'+col+'2e" stroke="'+col+'" stroke-width="2"/>'+dots+labs+'</svg>';
+}
+function renderInfo(){
+ var t=tt(),v=$("#view-info"),it=LANG==="it";
+ var steps='<div class="howmini" style="max-width:560px;margin:0">'+t.how.map(function(s,i){return '<div class="s"><b>'+(i+1)+'</b><span>'+esc(s)+'</span></div>';}).join("")+'</div>';
+ var scoring=it?'<p>Lo strumento si basa sulla <b>classificazione delle protesi full-arch avvitate su impianti</b> proposta da Gelpi e colleghi (Eur J Musculoskelet Dis, 2024), che descrive sei soluzioni protesiche e un albero decisionale per orientarne la scelta.</p><p>Lavorano insieme due motori. Il <b>flowchart deterministico</b> riproduce quell\'albero decisionale e indica l\'opzione «di percorso». Il <b>punteggio pesato</b>, sviluppato a partire dalla stessa classificazione, confronta tutte e sei le soluzioni.</p><p>Ogni opzione parte da un punteggio base e viene spostata da <b>modificatori</b>, uno per parametro. I pesi seguono le stesse evidenze citate nei «Perché conta»: il bruxismo penalizza la zirconia occlusale e premia resina e composito; lo spazio ridotto penalizza Titanio-Zirconia e overdenture; il budget ridotto premia le soluzioni economiche; l\'età giovane premia i materiali che conservano la dimensione verticale. Il punteggio finale è la somma di base e modificatori attivi, su scala 0-100, e le opzioni sono ordinate in modo decrescente.</p><p>Quando flowchart e punteggio divergono di poco, sono opzioni contigue: la classificazione è interpretativa, non prescrittiva. Il modello riproduce i cinque casi clinici descritti nella pubblicazione ed è stato controllato per coerenza interna, monotonìa dei parametri e assenza di controindicazioni.</p><p>Il <b>materiale del framework</b> (titanio o cromo-cobalto) segue il confronto fra i due metalli riportato nella stessa classificazione: il titanio è il materiale di scelta per biocompatibilità e affidabilità, mentre il cromo-cobalto conviene con spazio protesico ridotto o cantilever estesi, perché consente sezioni più sottili (0,5/2,5 mm contro 0,8/4 mm). Nel Ponte Titanio-Zirconia e nell\'overdenture il framework è in titanio per disegno; il Full Zirconia non ha struttura metallica. Nel modello agisce come moltiplicatore sul punteggio di ciascuna opzione, non come voce a sé.</p>':'<p>The tool builds on the <b>classification of full-arch screw-retained implant prostheses</b> proposed by Gelpi and colleagues (Eur J Musculoskelet Dis, 2024), which describes six prosthetic solutions and a decision tree to guide the choice.</p><p>Two engines work together. The <b>deterministic flowchart</b> reproduces that decision tree and gives the «path» option. The <b>weighted score</b>, developed from the same classification, compares all six solutions.</p><p>Each option starts from a base score and is shifted by <b>modifiers</b>, one per parameter. The weights follow the same evidence cited in the «Why it matters» notes: bruxism penalises occlusal zirconia and rewards resin and composite; reduced space penalises Titanium-Zirconia and overdenture; a reduced budget rewards economical solutions; young age rewards materials that preserve the vertical dimension. The final score is the sum of base and active modifiers on a 0-100 scale, and options are ranked in descending order.</p><p>When flowchart and score diverge slightly, the options are adjacent: the classification is interpretive, not prescriptive. The model reproduces the five clinical cases described in the publication and was checked for internal consistency, parameter monotonicity and absence of contraindications.</p><p>The <b>framework material</b> (titanium or cobalt-chromium) follows the comparison between the two metals reported in the same classification: titanium is the material of choice for biocompatibility and reliability, while cobalt-chromium is preferable with reduced prosthetic space or long cantilevers, since it allows thinner sections (0.5/2.5 mm versus 0.8/4 mm). In the Titanium-Zirconia bridge and the overdenture the framework is titanium by design; Full Zirconia has no metal structure. In the model it acts as a multiplier on the score of each option, not as a standalone item.</p>';
+ var cat='';["toronto","natural","thimble","tizr","barovd","fullzr"].forEach(function(o){var om=OPT_TEXT[LANG][o],col=OPTION_META[o].color;cat+='<div class="optcard"><h4><span class="swatch" style="background:'+col+'"></span>'+esc(om.n)+(o==="fullzr"?' <span class="chip warn">'+(it?"sconsigliata":"discouraged")+'</span>':'')+'</h4><div class="layers"><b>'+esc(t.metaMeso)+':</b> '+esc(om.meso)+'<br><b>'+esc(t.metaSupra)+':</b> '+esc(om.supra)+'</div><div style="font-size:12.5px;color:var(--muted)">'+esc(om.d)+'</div><div class="chiprow">'+om.pros.map(function(x){return '<span class="chip good">✓ '+esc(x)+'</span>';}).join("")+om.cons.map(function(x){return '<span class="chip warn">! '+esc(x)+'</span>';}).join("")+'</div></div>';});
+ v.innerHTML='<section class="pad"><span class="eyebrow">'+esc(t.nav.info)+'</span><h1 style="font-size:26px;margin:12px 0 8px">'+esc(t.nav.info)+'</h1><h2 style="font-size:18px;margin:16px 0 8px;letter-spacing:-.02em">'+esc(t.howTitle)+'</h2><div class="card pad">'+steps+'</div><h2 style="font-size:18px;margin:22px 0 8px;letter-spacing:-.02em">'+(it?"Come nasce il punteggio":"How the score works")+'</h2><div class="card pad prose">'+scoring+'</div><h2 style="font-size:18px;margin:22px 0 8px;letter-spacing:-.02em">'+(it?"Le sei soluzioni protesiche":"The six prosthetic solutions")+'</h2><div class="grid2">'+cat+'</div></section>';
+}
+
+/* ---- PDF ---- */
+function printReport(inp,adv){
+ var t=tt();inp=inp||buildInputs(A);adv=adv||RehabEngine.advise(inp);
+ var flow=adv.flow,primaryOpt=OUTCOME2OPT[flow.outcome],pm=OPT_TEXT[LANG][primaryOpt];
+ var outLabel=flow.outcome==="toronto_or_long"?OUTCOME_LABEL[LANG].toronto_or_long:pm.n;
+ var metalTxt=(RehabEngine.materialOf(primaryOpt,inp)==="crco")?t.metalCr:t.metalTi;
+ var ds=new Date().toLocaleDateString(LANG==="it"?"it-IT":"en-GB");
+ var who=((REPORT.title&&REPORT.title!=="—")?REPORT.title+" ":"")+(REPORT.name||"—");
+ function hx(h){h=h.replace("#","");return [parseInt(h.substr(0,2),16)/255,parseInt(h.substr(2,2),16)/255,parseInt(h.substr(4,2),16)/255];}
+ var brand=[0.000,0.494,0.525],ink=[0.078,0.157,0.176],mut=[0.353,0.420,0.431],line=[0.88,0.92,0.92];
+ function ascii(s){return String(s==null?"":s).replace(/→/g,"->").replace(/[“”]/g,'"').replace(/[‘’]/g,"'").replace(/–/g,"-")}
+ function e2(s){return ascii(s).replace(/\\/g,"\\\\").replace(/\(/g,"\\(").replace(/\)/g,"\\)");}
+ var ops=[];
+ function txt(x,yt,sz,s,b,c){c=c||ink;ops.push(c[0].toFixed(3)+" "+c[1].toFixed(3)+" "+c[2].toFixed(3)+" rg BT /"+(b?"F2":"F1")+" "+sz+" Tf "+x+" "+(842-yt).toFixed(1)+" Td ("+e2(s)+") Tj ET");}
+ function rect(x,yt,w,h,c){ops.push(c[0].toFixed(3)+" "+c[1].toFixed(3)+" "+c[2].toFixed(3)+" rg "+x+" "+(842-yt-h).toFixed(1)+" "+w+" "+h+" re f");}
+ function wrap(s,m){var w=s.split(" "),l=[],c="";w.forEach(function(x){if((c+" "+x).trim().length>m){l.push(c);c=x;}else c=(c+" "+x).trim();});if(c)l.push(c);return l;}
+ rect(0,0,595,6,brand);
+ txt(40,56,22,"ArchWise",true,brand);txt(158,54,10,t.brandSub,false,mut);
+ txt(40,84,9.5,(LANG==="it"?"Clinico: ":"Clinician: ")+who,false,ink);
+ txt(40,99,9.5,t.pdfPt+": "+(REPORT.patient||"—"),false,ink);
+ txt(430,84,9.5,(LANG==="it"?"Data: ":"Date: ")+ds,false,mut);
+ rect(40,112,515,1,line);
+ txt(40,138,9,ascii(t.primaryK).toUpperCase(),true,brand);
+ txt(40,162,19,outLabel,true,ink);
+ txt(40,186,10,t.metaMeso+": "+pm.meso,false,mut);
+ txt(40,201,10,t.metaSupra+": "+pm.supra,false,mut);
+ if(primaryOpt!=="fullzr")txt(40,216,10,t.metaMetal+": "+metalTxt,false,mut);
+ txt(40,250,12,t.rankTitle,true,brand);
+ var by=272;adv.ranking.forEach(function(r,i){var col=hx(OPTION_META[r.option].color);var _ms=(r.material&&r.material!=="none")?(" ("+(r.material==="crco"?"Cr-Co":(LANG==="it"?"Titanio":"Titanium"))+")"):"";
+  txt(40,by,10,(i+1)+". "+OPT_TEXT[LANG][r.option].n+_ms,false,ink);
+  txt(508,by,10,r.score+"%",true,col);
+  rect(40,by+5,468,6,[0.90,0.94,0.94]);rect(40,by+5,468*r.score/100,6,col);by+=26;});
+ var py=by+10;
+ var pcf=adv.ranking.filter(function(r){return r.option===primaryOpt;})[0];
+ if(pcf&&pcf.contribs.length){
+  txt(40,py,12,(LANG==="it"?"Fattori che hanno pesato sul punteggio":"Factors that weighed on the score"),true,brand);py+=17;
+  txt(40,py,8.5,(LANG==="it"?"Quanto ciascuna risposta ha spostato il punteggio dell'opzione consigliata.":"How each answer shifted the recommended option score."),false,mut);py+=15;
+  pcf.contribs.slice().sort(function(a,b){return Math.abs(b.delta)-Math.abs(a.delta);}).slice(0,7).forEach(function(cc){
+   var col=cc.delta>0?[0.000,0.545,0.522]:[0.72,0.28,0.17];
+   txt(40,py,9.5,(cc.delta>0?"+":"")+cc.delta,true,col);
+   txt(72,py,9.5,(FACTOR_TEXT[LANG][cc.factor]||cc.factor),false,ink);py+=13.5;
+  });
+ }
+ txt(40,py+10,9,(LANG==="it"?"La mappa completa del percorso decisionale a nodi e nella pagina seguente.":"The full node map of the decision path is on the next page."),false,brand);
+ txt(40,806,8,(LANG==="it"?"Fonte: ":"Source: ")+"Gelpi F, et al. Eur J Musculoskelet Dis 2024;13(1):17-40.",false,mut);
+ txt(40,818,8,(LANG==="it"?"Strumento di supporto: non sostituisce il giudizio del clinico. Nessun dato trasmesso.":"Support tool: does not replace clinical judgement. No data transmitted."),false,mut);
+ var content=ops.join("\n");
+ var PW=842,PH=595,o2=[];
+ function col2(c){return c[0].toFixed(3)+" "+c[1].toFixed(3)+" "+c[2].toFixed(3);}
+ function t2(x,yt,sz,s,b,c){c=c||ink;o2.push(col2(c)+" rg BT /"+(b?"F2":"F1")+" "+sz+" Tf "+x.toFixed(1)+" "+(PH-yt).toFixed(1)+" Td ("+e2(s)+") Tj ET");}
+ function tc2(cxp,yt,sz,s,b,c){var w=String(ascii(s)).length*sz*(b?0.56:0.52);t2(cxp-w/2,yt,sz,s,b,c);}
+ function rectF2(x,yt,w,h,fc,sc,lw){var y=(PH-yt-h).toFixed(1);var o="";if(fc)o+=col2(fc)+" rg ";if(sc)o+=col2(sc)+" RG "+lw+" w ";o+=x.toFixed(1)+" "+y+" "+w.toFixed(1)+" "+h.toFixed(1)+" re "+(fc&&sc?"B":(fc?"f":"S"));o2.push(o);}
+ var am=activeMap(inp);
+ var S2=120,YT2=5.2;
+ function scx(id){return NODE_POS[id].x*S2;}
+ function scy(id){return(YT2-NODE_POS[id].y)*S2;}
+ var minX=1e9,maxX=-1e9,minY=1e9,maxY=-1e9;
+ Object.keys(NODE_POS).forEach(function(id){var g=mapGeom(id),x=scx(id),y=scy(id),hw=g.w*S2/2,hh=g.h*S2/2;if(x-hw<minX)minX=x-hw;if(x+hw>maxX)maxX=x+hw;if(y-hh<minY)minY=y-hh;if(y+hh>maxY)maxY=y+hh;});
+ minX-=10;maxX+=10;minY-=10;maxY+=10;
+ var DW=PW-44,DH=PH-74-42,k=Math.min(DW/(maxX-minX),DH/(maxY-minY));
+ var offX=(PW-(maxX-minX)*k)/2,topY=74+(DH-(maxY-minY)*k)/2;
+ function PX(sx){return offX+(sx-minX)*k;}
+ function PYt(sy){return topY+(sy-minY)*k;}
+ rectF2(0,0,PW,6,brand,null,0);
+ t2(24,40,15,(LANG==="it"?"Albero decisionale - percorso a nodi":"Decision tree - node path"),true,brand);
+ t2(24,57,9,(LANG==="it"?"Turchese: percorso Si/No seguito. Ambra: ripiego economico. Grigio: rami non percorsi. Esito: ":"Teal: Yes/No path followed. Amber: cost fallback. Grey: branches not taken. Outcome: ")+outLabel,false,mut);
+ var GREEN=[0.000,0.651,0.682],GOLD=[0.776,0.541,0.176],GREY=[0.796,0.847,0.847];
+ var ordered=EDGES.slice().sort(function(a,b){return (am.edges[a[0]+"|"+a[1]]?1:0)-(am.edges[b[0]+"|"+b[1]]?1:0);});
+ ordered.forEach(function(e){
+  var key=e[0]+"|"+e[1],on=am.edges[key],cost=(e[3]==="redir");
+  var sx=PX(scx(e[0])),sy=PYt(scy(e[0])),tx=PX(scx(e[1])),ty=PYt(scy(e[1])),my=(sy+ty)/2;
+  var c=on?(cost?GOLD:GREEN):GREY,lw=on?2:1;
+  var s=col2(c)+" RG "+lw+" w "+(cost?"[4 3] 0 d ":"[] 0 d ");
+  s+=sx.toFixed(1)+" "+(PH-sy).toFixed(1)+" m "+sx.toFixed(1)+" "+(PH-my).toFixed(1)+" "+tx.toFixed(1)+" "+(PH-my).toFixed(1)+" "+tx.toFixed(1)+" "+(PH-ty).toFixed(1)+" c S";
+  o2.push(s);
+ });
+ o2.push("[] 0 d");
+ Object.keys(NODE_POS).slice().sort(function(a,b){var aa=(am.nodes[a]||am.finalNode===a)?1:0,bb=(am.nodes[b]||am.finalNode===b)?1:0;if(aa!==bb)return aa-bb;return NODE_POS[a].x-NODE_POS[b].x;}).forEach(function(id){
+  var g=mapGeom(id),act=am.nodes[id],fin=(am.finalNode===id);
+  var cxp=PX(scx(id)),cyt=PYt(scy(id)),w=g.w*S2*k,h=g.h*S2*k,fc,sc,tcol,bold;
+  if(g.isOut){
+   var opt=(id==="tizr_L"||id==="tizr_R")?"tizr":(id==="toronto_or_long"?"toronto":id);
+   var oc=hx(OPTION_META[opt]?OPTION_META[opt].color:"#007e86");
+   if(fin||act){fc=oc;sc=oc;tcol=[1,1,1];}else{fc=[1,1,1];sc=oc;tcol=oc;}
+   bold=true;
+  }else{
+   if(fin){fc=[0.000,0.494,0.525];sc=[0.000,0.494,0.525];tcol=[1,1,1];}
+   else if(act){fc=[0.886,0.949,0.949];sc=GREEN;tcol=ink;}
+   else{fc=[1,1,1];sc=[0.83,0.88,0.88];tcol=[0.353,0.420,0.431];}
+   bold=false;
+  }
+  rectF2(cxp-w/2,cyt-h/2,w,h,fc,sc,(act||fin)?1.2:0.7);
+  var sz=MAP.fs*S2*k,lh=MAP.lh*S2*k,startb=cyt-(g.lines.length-1)*lh/2+sz*0.34;
+  g.lines.forEach(function(ln,ix){tc2(cxp,startb+ix*lh,sz,ln,bold,tcol);});
+ });
+ var ly=PH-24;
+ function lg(x,c,dash,tx_){o2.push(col2(c)+" RG 2.2 w "+(dash?"[4 3] 0 d ":"[] 0 d ")+x.toFixed(1)+" "+(PH-ly+3).toFixed(1)+" m "+(x+22).toFixed(1)+" "+(PH-ly+3).toFixed(1)+" l S");t2(x+28,ly+6,8.5,tx_,false,mut);}
+ lg(24,GREEN,false,(LANG==="it"?"percorso seguito":"path followed"));
+ lg(160,GOLD,true,(LANG==="it"?"ripiego economico":"cost fallback"));
+ lg(300,GREY,false,(LANG==="it"?"rami non percorsi":"branches not taken"));
+ o2.push("[] 0 d");
+ var content2=o2.join("\n");
+ var objs=["<< /Type /Catalog /Pages 2 0 R >>","<< /Type /Pages /Kids [3 0 R 7 0 R] /Count 2 >>","<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 4 0 R >>","<< /Length "+content.length+" >>\nstream\n"+content+"\nendstream","<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>","<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>","<< /Type /Page /Parent 2 0 R /MediaBox [0 0 842 595] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 8 0 R >>","<< /Length "+content2.length+" >>\nstream\n"+content2+"\nendstream"];
+ var pdf="%PDF-1.4\n",off=[];
+ for(var i=0;i<objs.length;i++){off.push(pdf.length);pdf+=(i+1)+" 0 obj\n"+objs[i]+"\nendobj\n";}
+ var xr=pdf.length;pdf+="xref\n0 "+(objs.length+1)+"\n0000000000 65535 f \n";
+ for(var i=0;i<objs.length;i++){pdf+=("0000000000"+off[i]).slice(-10)+" 00000 n \n";}
+ pdf+="trailer\n<< /Size "+(objs.length+1)+" /Root 1 0 R >>\nstartxref\n"+xr+"\n%%EOF";
+ try{window.__pdf=pdf;}catch(e){}
+ try{var bytes=new Uint8Array(pdf.length);for(var k=0;k<pdf.length;k++)bytes[k]=pdf.charCodeAt(k)&0xff;var blob=new Blob([bytes],{type:"application/pdf"});var url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=(LANG==="it"?"resoconto-decisionale":"decision-summary")+".pdf";document.body.appendChild(a);a.click();a.remove();try{window.open(url,"_blank");}catch(e2){}setTimeout(function(){URL.revokeObjectURL(url);},60000);}catch(e){}
+}
+
+/* ---- tooltips + reflinks ---- */
+var tip=$("#tip");
+document.addEventListener("click",function(e){
+ var rl=e.target.closest(".reflink");
+ if(rl){var rid=rl.getAttribute("data-ref");VIEW="refs";renderRefs();applyView();setTimeout(()=>{var el=$("#ref-"+rid);if(el){el.scrollIntoView({behavior:"smooth",block:"center"});el.style.background="#fff7e6";setTimeout(()=>el.style.background="",1400);}},60);e.preventDefault();}
+});
+$("#menuBtn").onclick=function(){$("#nav").classList.toggle("open");};
+
+/* ---- boot ---- */
+
+function renderWhy(html){
+ if(!html)return "";
+ var cited=[];
+ var out=html.replace(/\[([a-z]+[0-9]{4})\]/g,function(m,id){ if(REFNUM[id]){ if(cited.indexOf(id)<0)cited.push(id); return '<sup class="reflink" data-ref="'+id+'">['+REFNUM[id]+']</sup>'; } return m; });
+ if(cited.length){
+  out+='<div class="whybib"><div class="whybib-h">'+(LANG==="it"?"Bibliografia":"References")+'</div>'+cited.map(function(id){var r=REFERENCES.find(function(x){return x.id===id;});if(!r)return "";var link=r.doi?"https://doi.org/"+r.doi:(r.pmid?"https://pubmed.ncbi.nlm.nih.gov/"+r.pmid+"/":"#");return '<div class="whyref"><b>['+REFNUM[id]+']</b> '+esc(r.authors)+' ('+r.year+'). '+esc(r.title)+'. <em>'+esc(r.journal)+'</em> '+esc(r.cit)+'.'+' <a href="'+link+'" target="_blank" rel="noopener">'+(r.doi?"doi":"PubMed")+'</a></div>';}).join("")+'</div>';
+ }
+ return out;
+}
+render();
+</script>
+</body>
+</html>
