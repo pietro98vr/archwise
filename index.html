@@ -25,14 +25,14 @@
   --ff:'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;--display:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
 body{margin:0;font-family:var(--ff);font-size:16px;line-height:1.55;color:var(--ink);
   background:var(--bg);
   min-height:100vh;-webkit-font-smoothing:antialiased}
 h1,h2,h3,h4{margin:0;font-family:var(--display);font-weight:600;line-height:1.2;letter-spacing:0}
 a{color:var(--brand2);text-decoration:none}a:hover{text-decoration:underline}
 p{margin:.4em 0}
-.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(14px,3vw,26px)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(clamp(18px,3vw,26px),env(safe-area-inset-left));padding-right:max(clamp(18px,3vw,26px),env(safe-area-inset-right))}
 .hidden{display:none!important}
 
 /* brand / header */
